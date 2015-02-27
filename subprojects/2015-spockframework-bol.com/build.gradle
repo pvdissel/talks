@@ -1,5 +1,3 @@
-import org.asciidoctor.gradle.AsciidoctorTask
-
 apply plugin: 'groovy'
 
 ext {
@@ -29,6 +27,14 @@ dependencies {
     testCompile libraries.spock
 }
 
+test.ignoreFailures = true
+test.doLast {
+    println ''
+    println ' >> IGNORED TEST FAILURES! <<'
+    println '    As these are on purpose'
+    println ''
+}
+
 presentation.resources {
     into('sources') {
         from "${projectDir}/src/main/groovy"
@@ -37,12 +43,3 @@ presentation.resources {
 }
 
 presentation.dependsOn(check)
-
-//task presentation  {
-//    resources {
-//        into('source') {
-//            from "${projecDir}/src/main"
-//            from "${projecDir}/src/test"
-//        }
-//    }
-//}
