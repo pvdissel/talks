@@ -1,0 +1,27 @@
+:backend: revealjs
+:revealjs_theme: default
+:revealjs_control: true
+:revealjs_center: true
+:revealjs_history: true
+:revealjs_transition: linear
+:source-highlighter: coderay
+
+:images: ./images
+:sources: ../../
+
+= Spock Framework
+
+[data-background={images}/minions-oooooh.gif]
+== Awesome
+[source,groovy]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/AwesomeSpec.groovy[lines=6..9]
+----
+
+[data-background={images}/minions-awesome.gif]
+== And Groovy
+
+== About me
+
+
+
