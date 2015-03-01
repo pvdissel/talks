@@ -6,7 +6,7 @@
 :revealjs_history: true
 :revealjs_transition: linear
 :source-highlighter: highlightjs
-:highlightjs_style: reveal.js/lib/css/solarized_dark.css
+:highlightjs_style: highlight.js/styles/solarized_dark.css
 // Relative to generated HTML
 :imagesdir: ./images
 ////
