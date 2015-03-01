@@ -1,25 +1,64 @@
 :backend: revealjs
-:revealjs_theme: default
+:revealjs_theme: black
+//:revealjs_customtheme: theme/bol.com/bol.com.css
 :revealjs_control: true
 :revealjs_center: true
 :revealjs_history: true
 :revealjs_transition: linear
-:source-highlighter: coderay
-
-:images: ./images
+:source-highlighter: highlightjs
+:highlightjs_style: reveal.js/lib/css/solarized_dark.css
+// Relative to generated HTML
+:imagesdir: ./images
+////
+Relative to original asciidoc document,
+as source code is processed before creation
+of the html-file
+////
 :sources: ../../
 
 = Spock Framework
+Patrick van Dissel <@pvdissel>
+v1.0, 2015-03-10
+:toc:
 
-[data-background={images}/minions-oooooh.gif]
-== Awesome
+
+[data-background={imagesdir}/minions-oooooh.gif]
+== !
+
 [source,groovy]
 ----
 include::{sources}/test/groovy/com/bol/spock/sample/AwesomeSpec.groovy[lines=6..9]
 ----
 
-[data-background={images}/minions-awesome.gif]
-== And Groovy
+[NOTE.speaker]
+--
+Lets start-off with a sample of a typical Spock Specification
+to get used to it.
+Let it soak in for a bit..
+
+From here on, I will explain how this all works
+and what more there is
+--
+
+
+== Specification
+
+Specification based, blablabla
+
+== Blocks -> Phases
+
+image::Blocks2Phases.png[]
+
+
+[data-background={imagesdir}/minions-awesome.gif]
+== Parameterized specs
+
+
+== @Unroll
+
+
+== !
+
 
 == About me
 
