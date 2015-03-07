@@ -14,30 +14,117 @@ Relative to original asciidoc document,
 as source code is processed before creation
 of the html-file
 ////
-:sources: ../../
+:sources: ../..
 
 = Spock Framework
 Patrick van Dissel <@pvdissel>
 v1.0, 2015-03-10
-:toc:
+
+== !
+
+"Spock is a testing and specification framework
+ for Java and Groovy applications. What makes it stand
+ out from the crowd is its beautiful and
+ highly expressive specification language."
+-- Spock Framework Reference Documentation, Introduction
+
+
+== !
+
+"Thanks to its JUnit runner, Spock is compatible
+ with most IDEs, build tools, and continuous integration servers.
+ Spock is inspired from
+ JUnit, jMock, RSpec, Groovy, Scala,
+ Vulcans, and other fascinating life forms."
+-- Spock Framework Reference Documentation, Introduction
 
 
 [data-background={imagesdir}/minions-oooooh.gif]
 == !
 
-[source,groovy]
+[NOTE.speaker]
+--
+Lets start-off with some samples of Spock Specifications
+to get used to it.
+
+For each sample,
+think for yourself,
+what you expect the specification does.
+
+After the samples, I will explain how this all works
+--
+
+
+== !
+
+[source,groovy,indent=0]
 ----
-include::{sources}/test/groovy/com/bol/spock/sample/AwesomeSpec.groovy[lines=6..9]
+include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slide1]
 ----
+
+
+== !
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slide2]
+----
+
+
+== !
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slide3]
+----
+
+
+== !
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slide4]
+----
+
+
+== !
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slide5]
+----
+
+
+== !
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slide6]
+----
+
+
+== !
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slide7]
+----
+
+
+[data-background={imagesdir}/minions-wonderful.gif]
+== !
 
 [NOTE.speaker]
 --
-Lets start-off with a sample of a typical Spock Specification
-to get used to it.
-Let it soak in for a bit..
+Wasn't that wonderful?
+--
 
-From here on, I will explain how this all works
-and what more there is
+
+== Spock Primer
+
+[NOTE.speaker]
+--
+Let's start at the beginning
 --
 
 
@@ -377,8 +464,15 @@ override the annootation’s `quite` attribute
 == Resources
 
 - http://spockframework.org
+- Spock playground +
+  http://webconsole.spockframework.org
 - http://mrhaki.blogspot.nl/search/label/Spock
-- Java Testing with Spock +
+- Java Testing with Spock (book) +
   http://manning.com/kapelonis/
 
+== Thanks
 
+Slides & samples +
+https://github.com/pvdissel/talks
+
+@pvdissel

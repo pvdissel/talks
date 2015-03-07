@@ -30,8 +30,8 @@ dependencies {
 test.ignoreFailures = true
 test.doLast {
     println ''
-    println ' >> IGNORED TEST FAILURES! <<'
-    println '    As these are on purpose'
+    println '>>' + 'IGNORED TEST FAILURES!'.center(60) + '<<'
+    println '>>' + 'As these are failing for demo purpose'.center(60) + '<<'
     println ''
 }
 
