@@ -18,6 +18,7 @@ libraries.spock = ['org.spockframework:spock-core:0.7-groovy-2.0',
                    libraries.groovy,
                    'org.objenesis:objenesis:2.0',
                    'cglib:cglib-nodep:2.2',
+                   'com.athaydes:spock-reports:1.2.4',
 ]
 
 dependencies {
@@ -25,14 +26,6 @@ dependencies {
     compile libraries.logging
 
     testCompile libraries.spock
-}
-
-test.ignoreFailures = true
-test.doLast {
-    println ''
-    println '>>' + 'IGNORED TEST FAILURES!'.center(60) + '<<'
-    println '>>' + 'As these are failing for demo purpose'.center(60) + '<<'
-    println ''
 }
 
 presentation.resources {

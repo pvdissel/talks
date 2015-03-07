@@ -89,12 +89,13 @@ class SamplesSpec extends Specification {
 
     // tag::slide7[]
     def 'Adding an item to a list increases the size by one'() {
+        given: 'a list with one item'
         def names = ['Spock']
 
         when: 'adding one item to the list'
         names << 'Groovy'
 
-        then: 'the list size increased by one'
+        then: 'the list size increases by one'
         names.size() == old(names.size()) + 1
     }
     // end::slide7[]

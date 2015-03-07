@@ -55,7 +55,7 @@ After the samples, I will explain how this all works
 --
 
 
-== !
+=== !
 
 [source,groovy,indent=0]
 ----
@@ -63,7 +63,7 @@ include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slid
 ----
 
 
-== !
+=== !
 
 [source,groovy,indent=0]
 ----
@@ -71,7 +71,7 @@ include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slid
 ----
 
 
-== !
+=== !
 
 [source,groovy,indent=0]
 ----
@@ -79,7 +79,7 @@ include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slid
 ----
 
 
-== !
+=== !
 
 [source,groovy,indent=0]
 ----
@@ -87,7 +87,7 @@ include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slid
 ----
 
 
-== !
+=== !
 
 [source,groovy,indent=0]
 ----
@@ -95,7 +95,7 @@ include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slid
 ----
 
 
-== !
+=== !
 
 [source,groovy,indent=0]
 ----
@@ -103,7 +103,7 @@ include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slid
 ----
 
 
-== !
+=== !
 
 [source,groovy,indent=0]
 ----
@@ -112,7 +112,7 @@ include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slid
 
 
 [data-background={imagesdir}/minions-wonderful.gif]
-== !
+=== !
 
 [NOTE.speaker]
 --
@@ -128,31 +128,485 @@ Let's start at the beginning
 --
 
 
-== Specification
+=== Characteristics
 
-Specification based, blablabla
+[%step]
+- GroovyDSL
+- `Sputnik`, Spock’s JUnit runner
+- Works for Java and Groovy code
 
 [NOTE.speaker]
 --
+- GroovyDSL,
+Specifications, or Specs for short
+Are written in Groovy,
+with additional Domain Specific Language syntax
+for the Specification domain.
+
+Spocks internals are pure Java,
+and therefor JVM-language agnostic.
+But the GroovyDSL ties it to the
+Groovy language for the specifications.
+
+- Junit Runner,
+Spocks specifications are runned with
+Spock's JUnit runner, called `Sputnik`.
+Because of this, Spock integrates with
+every tool that supports JUnit.
+But as Spock supports way more than
+Junit, the integration may not be always
+be optimal.
+
+- Works for Java and Groovy code,
+Groovy is a multi-faceted language for the JVM
+and can largely be viewed as a superset of Java.
+Therefor Groovy is easy to learn for Java developers,
+and makes it possible
+to test Java and Groovy code with Spock
 --
 
-== Blocks -> Phases
+
+=== Characteristics
+
+[%step]
+- Specification-based +
+  (Specification by Example? BDD?)
+- Data Driven Testing +
+  with data providers and tables
+- Interaction Based Testing +
+  with build-in support for +
+  mocking, stubbing and spying
+
+[NOTE.speaker]
+--
+- Specification-based,
+Spock is Specification-based,
+You can also call it
+Specification-by-Example
+or Behaviour Driven Development.
+
+The idea is, that you describe
+how you expect the
+System-under-Specification, to react.
+
+As you've seen in the samples,
+the Specification DSL is very expressive,
+but you're not forced to go all the way
+
+- Data Driven Testing,
+The Specification DSL has a specific
+syntax for data providers
+and even tables to acts as data providers
+
+- Interaction Based Testing,
+Spock includes a mocking, stubbing and
+spying framework
+which is lenient by default, like Mockito
+and can be as powerful as PowerMock
+--
+
+
+=== Imports
+
+[source,groovy]
+----
+import spock.lang.*
+----
+
+[NOTE.speaker]
+--
+Package `spock.lang` contains the most
+important types for writing specifications.
+--
+
+
+=== Specification
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/MyFirstSpec.groovy[tags=slide]
+----
+
+[NOTE.speaker]
+--
+A specification is represented as a
+Groovy class that extends from `spock.lang.Specification`.
+
+The name of a specification usually relates to the
+system or system operation described
+by the specification.
+
+For example, `CustomerSpec`, `H264VideoPlayback`,
+and `ASpaceshipAttackedFromTwoSides`
+are all reasonable names for a specification.
+
+There are no standards to the specification
+class name, no required "Test" on a specific
+location in the name.
+Just extend from `Specification`
+--
+
+
+=== Instance Fields
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/InstanceFields.groovy[tags=instance]
+----
+
+[NOTE.speaker]
+--
+Instance fields are a good place to store objects belonging
+to the specification's fixture. It is good practice to
+initialize them right at the point of declaration.
+Or in the equivalent `setup()` method.
+
+Objects stored into instance fields are
+_not_ shared between feature methods.
+Instead, every feature method gets its own object.
+This helps to isolate feature methods from each other.
+--
+
+
+=== Shared Fields
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/InstanceFields.groovy[tags=shared]
+----
+
+[NOTE.speaker]
+--
+Sometimes you need to share an object between feature methods.
+For example, the object might be very expensive to create,
+or you might want your feature methods to interact with each other.
+To achieve this, declare a `@Shared` field.
+Again it's best to initialize the field right at the point of declaration.
+Or in the equivalent `setupSpec()` method.
+--
+
+
+=== Static Fields
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/InstanceFields.groovy[tags=static]
+----
+
+[NOTE.speaker]
+--
+Static fields should only be used for constants.
+Otherwise shared fields are preferable,
+because their semantics with respect to sharing are more well-defined.
+--
+
+
+=== Fixture Methods
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/FixtureMethods.groovy[tags=slide]
+----
+
+[NOTE.speaker]
+--
+Fixture methods are responsible for
+setting up and cleaning up the environment in which feature methods are run.
+
+Usually it's a good idea to use a
+fresh fixture for every feature method,
+which is what the `setup()` and `cleanup()`
+methods are for.
+
+Occasionally it makes sense for feature methods to share a fixture,
+which is achieved by using shared fields
+together with the `setupSpec()` and `cleanupSpec()` methods.
+All fixture methods are optional.
+
+Note: The `setupSpec()` and `cleanupSpec()` methods may not reference instance fields.
+--
+
+
+=== Feature Methods
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/FeatureMethods.groovy[tags=slide]
+----
+
+[NOTE.speaker]
+--
+Feature methods are the heart of a specification.
+They describe the features that you expect to
+find in the system under specification.
+By convention, feature methods are named with String literals. Try to choose
+good names for your feature methods, and feel free to use any characters you like!
+--
+
+
+=== Feature Methods
+
+Phases::
+. Set up the feature's fixture
+. Provide a *_stimulus_* to the system under specification
+. Describe the *_response_* expected from the system
+. Clean up the feature's fixture
+
+[NOTE.speaker]
+--
+Conceptually, a feature method consists of four phases:
+
+. Set up the feature's fixture
+. Provide a *_stimulus_* to the system under specification
+. Describe the *_response_* expected from the system
+. Clean up the feature's fixture
+
+Whereas the first and last phases are optional,
+the stimulus and response phases are always present
+and may occur more than once.
+--
+
+
+== Blocks
 
 image::Blocks2Phases.png[]
 
 [NOTE.speaker]
 --
+Spock has built-in support for implementing each of
+the conceptual phases of a feature method.
+
+A feature method must have at least one explicit
+(i.e. labelled) block.
+Blocks divide a method into distinct sections,
+and cannot be nested.
+--
+
+
+=== Setup Blocks
+
+[source,groovy,indent=0]
+----
+setup:
+def stack = new Stack()
+----
+
+[source,groovy,indent=0]
+----
+given:
+def stack = new Stack()
+----
+
+[source,groovy,indent=0]
+----
+def stack = new Stack()
+----
+
+[NOTE.speaker]
+--
+The `setup` block is where you do any setup work
+for the feature that you are describing.
+
+It is an optional block
+and has no special semantics.
+
+The `given:` label is an alias to the `setup:` label
+--
+
+
+=== When and Then Blocks
+
+[source,groovy,indent=0]
+----
+when:   // stimulus
+then:   // response
+----
+
+[NOTE.speaker]
+--
+The `when` and `then` blocks always occur together.
+They describe a stimulus and the expected response.
+Whereas `when` blocks may contain arbitrary code,
+`then` blocks are restricted to
+_conditions_,
+_exception conditions_,
+_interactions_,
+and variable definitions.
+A feature method may contain multiple pairs of `when-then` blocks.
+--
+
+
+=== Conditions
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tag=slide2]
+----
+
+[NOTE.speaker]
+--
+Conditions describe an expected state,
+much like JUnit's assertions.
+However, conditions are written as plain boolean expressions,
+according to the Groovy-truth.
+Eliminating the need for explicit assertions.
+--
+
+
+=== Condition Feedback
+
+[source,groovy,indent=0]
+----
+Condition not satisfied:
+
+stack.size() == 2
+|     |      |
+|     1      false
+[push me]
+----
+
+[NOTE.speaker]
+--
+As you can see, Spock captures all values produced
+during the evaluation of a condition,
+and presents them in an easily digestible form.
+
+And in IntelliJ you can see a diff
+between the values.
+Where `stack.size()` is the actual value,
+and the `2` is the expected value.
+--
+
+
+=== Exception Conditions
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tag=slide4]
+----
+
+[NOTE.speaker]
+--
+Exception conditions are used to describe that
+a `when` block should throw an exception.
+
+There's the `thrown()` and `notThrown`
+--
+
+
+=== Expect Blocks
+
+[source,groovy,indent=0]
+----
+when:
+def x = Math.max(1, 2)
+
+then:
+x == 2
+----
+
+vs.
+
+[source,groovy,indent=0]
+----
+expect:
+Math.max(1, 2) == 2
+----
+
+[NOTE.speaker]
+--
+An `expect` block is more limited than a `then` block,
+in that it may only contain conditions and variable definitions.
+
+It is useful in situations where it is
+more natural to describe stimulus
+and expected response in a single expression.
+
+As a guideline, use
+`when-then` to describe methods with side effects,
+and `expect` to describe purely functional methods.
+--
+
+
+=== Helper Methods
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/HelperMethods.groovy[tag=slide]
+----
+
+[NOTE.speaker]
+--
+If you factor out implicit conditions to helper methods,
+you must make the conditions explicit,
+with the `assert` keyword
+--
+
+
+== Specifications as Documentation
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tag=slide7]
+----
+
+[NOTE.speaker]
+--
+Well-written specifications are a valuable source of information,
+and can provide a Behaviour Driven Development style specification.
+--
+
+
+=== BDD-style Reports
+
+https://github.com/renatoathaydes/spock-reports[`spock-reports`] extension for BDD-style reports::
+- http://codepen.io/renatoathaydes/full/ihGgt[Feature Report]
+- http://codepen.io/renatoathaydes/full/mKckz[Summary Report]
+
+[NOTE.speaker]
+--
+Block descriptions are not only present in source code,
+but are also available to the Spock runtime.
+Currently, Spock doesn't do anything with these.
+But this will change.
+The `spock-reports` extension used this for BDD-style reports,
+and will probably be included into a future Spock release
 --
 
 
 [data-background={imagesdir}/minions-awesome.gif]
-== Parameterized specs
+== Data Driven Testing
 
-
-== @Unroll
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tag=slide6]
+----
 
 [NOTE.speaker]
 --
+A `where` block always comes last in a method, and may not be repeated.
+It is used to write data-driven feature methods.
+
+For all details, check the "Data Driven Testing"
+chapter of the Spock documentation.
+--
+
+
+== Interaction Based Testing
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tag=slide5]
+----
+
+[NOTE.speaker]
+--
+Whereas conditions describe an object's state,
+interactions describe how objects communicate with each other.
+
+This is what you test with mocking, stubbing and spying.
+For all details, check the "Interaction Based Testing"
+chapter of the Spock documentation.
 --
 
 
@@ -451,14 +905,73 @@ override the annootation’s `quite` attribute
 --
 
 
-=== title
+== Comparison to JUnit
 
-[source,groovy]
-----
-----
+|===
+|Spock                 |JUnit
+
+|Specification         |Test class
+|`setup()`             |`@Before`
+|`cleanup()`           |`@After`
+|`setupSpec()`         |`@BeforeClass`
+|`cleanupSpec()`       |`@AfterClass`
+|===
+
+
+=== !
+
+|===
+|Spock                 |JUnit
+
+|Feature               |Test
+|Feature method        |Test method
+|Data-driven feature   |Theory
+|Condition             |Assertion
+|===
+
+
+=== !
+
+|===
+|Spock                 |JUnit
+
+|Exception condition   |`@Test(expected=...)`
+|Interaction           | Mock expectation (e.g. in Mockito)
+|===
+
 
 [NOTE.speaker]
 --
+Although Spock uses a different terminology,
+many of its concepts and features are inspired from JUnit.
+Here is a rough comparison
+--
+
+
+[data-background={imagesdir}/minions-laugh-bottom.gif]
+== !
+
+[NOTE.speaker]
+--
+So, that's it
+--
+
+
+[data-background={imagesdir}/minions-exception.gif]
+== !
+
+[NOTE.speaker]
+--
+Do you feel like...?
+--
+
+
+[data-background={imagesdir}/minions-kiss.gif]
+== !
+
+[NOTE.speaker]
+--
+Or do you love it so far?
 --
 
 == Resources
@@ -466,9 +979,17 @@ override the annootation’s `quite` attribute
 - http://spockframework.org
 - Spock playground +
   http://webconsole.spockframework.org
-- http://mrhaki.blogspot.nl/search/label/Spock
 - Java Testing with Spock (book) +
   http://manning.com/kapelonis/
+- Spock Reports Extension +
+  https://github.com/renatoathaydes/spock-reports
+- http://mrhaki.blogspot.nl/search/label/Spock
+
+[NOTE.speaker]
+--
+Find more info here
+--
+
 
 == Thanks
 
