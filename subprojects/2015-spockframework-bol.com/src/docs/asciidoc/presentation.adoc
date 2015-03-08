@@ -1024,4 +1024,4 @@ Find more info here
 Slides & samples +
 https://github.com/pvdissel/talks
 
-@pvdissel
+https://twitter.com/pvdissel[@pvdissel]
