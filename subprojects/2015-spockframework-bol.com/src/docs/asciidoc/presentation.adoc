@@ -495,6 +495,15 @@ There's the `thrown()` and `notThrown`
 
 === Expect Blocks
 
+
+[source,groovy,indent=0]
+----
+expect:
+Math.max(1, 2) == 2
+----
+
+*vs*
+
 [source,groovy,indent=0]
 ----
 when:
@@ -502,14 +511,6 @@ def x = Math.max(1, 2)
 
 then:
 x == 2
-----
-
-vs.
-
-[source,groovy,indent=0]
-----
-expect:
-Math.max(1, 2) == 2
 ----
 
 [NOTE.speaker]
@@ -614,6 +615,7 @@ chapter of the Spock documentation.
 
 [NOTE.speaker]
 --
+Spock is very extensible.
 Some bundled extensions, are..
 --
 
@@ -622,7 +624,7 @@ Some bundled extensions, are..
 
 [source,groovy]
 ----
-@spock.lang.Ignore(reason = "TODO")
+@spock.lang.Ignore("Reason")
 def "my feature"() { ... }
 ----
 
@@ -668,11 +670,11 @@ use `spock.lang.Timeout`
 ----
 @Timeout(10)
 class TimedSpec extends Specification {
-  def "I fail after ten seconds"() { ... }
-  def "Me too"() { ... }
+    def "I fail after ten seconds"() { ... }
+    def "Me too"() { ... }
 
-  @Timeout(value = 250, unit = TimeUnit.MILLISECONDS)
-  def "I fail much faster"() { ... }
+    @Timeout(value = 250, unit = TimeUnit.MILLISECONDS)
+    def "I fail much faster"() { ... }
 }
 ----
 
@@ -686,9 +688,6 @@ Applying `Timeout` to a spec class +
 has the same effect as applying it to each feature +
 that is not already annotated with Timeout, +
 excluding time spent in fixture methods.
-
-When applied to a fixture method, +
-the timeout is per execution of the fixture method.
 
 When a timeout is reported to the user, +
 the stack trace shown reflects the execution stack +
@@ -705,8 +704,8 @@ use `spock.lang.Stepwise`
 ----
 @Stepwise
 class RunInOrderSpec extends Specification {
-  def "I run first"()  { ... }
-  def "I run second"() { ... }
+    def "I run first"()  { ... }
+    def "I run second"() { ... }
 }
 ----
 
@@ -779,12 +778,12 @@ use `spock.lang.Issue`
 ----
 @Issue("http://my.issues.org/FOO-1")
 class MySpec {
-  @Issue("http://my.issues.org/FOO-2")
-  def "Foo should do bar"() { ... }
+    @Issue("http://my.issues.org/FOO-2")
+    def "Foo should do bar"() { ... }
 
-  @Issue(["http://my.issues.org/FOO-3",
-          "http://my.issues.org/FOO-4"])
-  def "I have two related issues"() { ... }
+    @Issue(["http://my.issues.org/FOO-3",
+            "http://my.issues.org/FOO-4"])
+    def "I have two related issues"() { ... }
 }
 ----
 
@@ -803,15 +802,15 @@ use `spock.util.mop.Use`
 [source,groovy]
 ----
 class ListExtensions {
-  static avg(List list) { list.sum() / list.size() }
+    static avg(List list) { list.sum() / list.size() }
 }
 
 class MySpec extends Specification {
-  @Use(listExtensions)
-  def "can use avg() method"() {
-    expect:
-    [1, 2, 3].avg() == 2
-  }
+    @Use(listExtensions)
+    def "can use avg() method"() {
+        expect:
+        [1, 2, 3].avg() == 2
+    }
 }
 ----
 
@@ -834,22 +833,22 @@ use `spock.util.mop.ConfineMetaClassChanges`
 ----
 @Stepwise
 class FooSpec extends Specification {
-  @ConfineMetaClassChanges
-  def "I run first"() {
-    when:
-    String.metaClass.someMethod = { delegate }
+    @ConfineMetaClassChanges
+    def "I run first"() {
+        when:
+        String.metaClass.someMethod = { delegate }
 
-    then:
-    String.metaClass.hasMetaMethod('someMethod')
-  }
+        then:
+        String.metaClass.hasMetaMethod('someMethod')
+    }
 
-  def "I run second"() {
-    when:
-    "Foo".someMethod()
+    def "I run second"() {
+        when:
+        "Foo".someMethod()
 
-    then:
-    thrown(MissingMethodException)
-  }
+        then:
+        thrown(MissingMethodException)
+    }
 }
 ----
 
