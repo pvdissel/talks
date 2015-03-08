@@ -1,6 +1,6 @@
 :backend: revealjs
 :revealjs_theme: black
-//:revealjs_customtheme: theme/bol.com/bol.com.css
+:revealjs_customtheme: theme/bol.com/bol.com.css
 :revealjs_control: true
 :revealjs_center: true
 :revealjs_history: true
@@ -26,7 +26,7 @@ v1.0, 2015-03-10
  for Java and Groovy applications. What makes it stand
  out from the crowd is its beautiful and
  highly expressive specification language."
--- Spock Framework Reference Documentation, Introduction
+-- Spock Framework Reference Documentation
 
 
 == !
@@ -36,7 +36,7 @@ v1.0, 2015-03-10
  Spock is inspired from
  JUnit, jMock, RSpec, Groovy, Scala,
  Vulcans, and other fascinating life forms."
--- Spock Framework Reference Documentation, Introduction
+-- Spock Framework Reference Documentation
 
 
 [data-background={imagesdir}/minions-oooooh.gif]
@@ -901,7 +901,7 @@ If a cleanup operation fails with an exception, +
 the exception is reported by default, +
 and cleanup proceeds with the next annotated object. +
 To prevent cleanup exceptions from being reported, +
-override the annootation’s `quite` attribute
+override the annotation’s `quite` attribute
 --
 
 
@@ -927,16 +927,8 @@ override the annootation’s `quite` attribute
 |Feature method        |Test method
 |Data-driven feature   |Theory
 |Condition             |Assertion
-|===
-
-
-=== !
-
-|===
-|Spock                 |JUnit
-
 |Exception condition   |`@Test(expected=...)`
-|Interaction           | Mock expectation (e.g. in Mockito)
+|Interaction           |Mock expectation (e.g. in Mockito)
 |===
 
 
