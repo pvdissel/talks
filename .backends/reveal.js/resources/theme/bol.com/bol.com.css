@@ -364,6 +364,29 @@ body {
 }
 
 /*********************************************
+ * First slide
+ *********************************************/
+.reveal #header .details {
+    color: #d3e5f6;
+}
+
+.reveal #header .details span {
+    display: block;
+    line-height: 1.2em;
+}
+
+.reveal #header .details br {
+    display: none;
+}
+
+.reveal #header .email,
+.reveal #header #revnumber,
+.reveal #header #revdate,
+.reveal #header #revremark {
+    font-size: 0.6em;
+}
+
+/*********************************************
  * NAVIGATION CONTROLS
  *********************************************/
 .reveal .controls div.navigate-left, .reveal .controls div.navigate-left.enabled {

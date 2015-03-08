@@ -17,8 +17,7 @@ of the html-file
 :sources: ../..
 
 = Spock Framework
-Patrick van Dissel <@pvdissel>
-v1.0, 2015-03-10
+Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
 
 == !
 
@@ -941,7 +940,7 @@ Here is a rough comparison
 
 
 [data-background={imagesdir}/minions-laugh-bottom.gif]
-== !
+=== !
 
 [NOTE.speaker]
 --
