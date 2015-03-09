@@ -330,7 +330,7 @@ which is achieved by using shared fields
 together with the `setupSpec()` and `cleanupSpec()` methods.
 All fixture methods are optional.
 
-Note: The `setupSpec()` and `cleanupSpec()` methods may not reference instance fields.
+Note: The `setupSpec()` and `cleanupSpec()` methods may not reference non-shared instance fields.
 --
 
 
