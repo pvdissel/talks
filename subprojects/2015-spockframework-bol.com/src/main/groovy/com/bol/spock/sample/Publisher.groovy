@@ -9,7 +9,11 @@ class Publisher {
 
     void fire(Object event) {
         subscribers.each {
-            it.receive(event)
+            try {
+                it.receive(event)
+            } catch (Exception ex) {
+                // swallow
+            }
         }
     }
 }

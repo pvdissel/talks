@@ -70,7 +70,7 @@ class SamplesSpec extends Specification {
 
         then:
         1 * subscriber1.receive("event")
-        1 * subscriber2.receive("event")
+        1 * subscriber2.receive(_ as String)
     }
     // end::slide5[]
 
@@ -99,4 +99,25 @@ class SamplesSpec extends Specification {
         names.size() == old(names.size()) + 1
     }
     // end::slide7[]
+
+    // tag::slide8[]
+    def 'Subscriber thrown exception does not impact publisher'() {
+        def subscriber1 = Mock(Subscriber)
+        def subscriber2 = Mock(Subscriber)
+        def publisher = new Publisher()
+        publisher.add(subscriber1)
+        publisher.add(subscriber1)
+        publisher.add(subscriber2)
+
+        when:
+        publisher.fire('event')
+
+        then:
+        1 * subscriber1.receive('event')
+        1 * subscriber1.receive(_) >> {
+            throw new RuntimeException()
+        }
+        1 * subscriber2.receive(_ as String)
+    }
+    // end::slide8[]
 }

@@ -25,7 +25,7 @@ Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
  for Java and Groovy applications. What makes it stand
  out from the crowd is its beautiful and
  highly expressive specification language."
--- Spock Framework Reference Documentation
+-- Spock Framework Reference Documentation, http://docs.spockframework.org
 
 
 == !
@@ -35,7 +35,7 @@ Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
  Spock is inspired from
  JUnit, jMock, RSpec, Groovy, Scala,
  Vulcans, and other fascinating life forms."
--- Spock Framework Reference Documentation
+-- Spock Framework Reference Documentation, http://docs.spockframework.org
 
 
 [data-background={imagesdir}/minions-oooooh.gif]
@@ -107,6 +107,14 @@ include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slid
 [source,groovy,indent=0]
 ----
 include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slide7]
+----
+
+
+=== !
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slide8]
 ----
 
 
