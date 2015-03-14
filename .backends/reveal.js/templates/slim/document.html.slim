@@ -52,7 +52,9 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
           style=Asciidoctor::Stylesheets.instance.pygments_stylesheet_data(attr 'pygments-style')
     / For syntax highlighting
     - if attr? :highlightjs_style
-      link href=(attr :highlightjs_style) rel="stylesheet"
+      link href=(attr :highlightjs_style) title="default syntax highlighting" rel="stylesheet"
+      - if attr? :highlightjs_style_alternative
+        link href=(attr :highlightjs_style_alternative) title="alternative syntax highlighting" rel="alternate stylesheet"
     - else
       link href="#{revealjsdir}/lib/css/zenburn.css" rel="stylesheet"
     / If the query includes 'print-pdf', use the PDF print sheet

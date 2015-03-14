@@ -7,6 +7,7 @@
 :revealjs_transition: linear
 :source-highlighter: highlightjs
 :highlightjs_style: highlight.js/styles/solarized_dark.css
+:highlightjs_style_alternative: highlight.js/styles/solarized_light.css
 // Relative to generated HTML
 :imagesdir: ./images
 ////
