@@ -1,4 +1,5 @@
-include '2015-spockframework-bol.com'
+include '2015-03-10_SpockFramework_bol.com'
+include '2015-03-24_TAXP_bol.com'
 
 rootProject.name = 'pvdissel-talks'
 rootProject.children.each { project ->
@@ -6,7 +7,6 @@ rootProject.children.each { project ->
     String projectDirName = "subprojects/$fileBaseName"
     project.projectDir = new File(settingsDir, projectDirName)
 
-//    def buildFileName = "${fileBaseName}.gradle"
     def buildFileName = "build.gradle"
     if (new File(project.projectDir, buildFileName).isFile()) {
         project.buildFileName = buildFileName

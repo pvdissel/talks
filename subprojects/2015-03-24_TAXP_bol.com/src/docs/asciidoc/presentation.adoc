@@ -1,0 +1,28 @@
+:backend: revealjs
+:revealjs_theme: black
+:revealjs_customtheme: theme/bol.com/bol.com.css
+:revealjs_control: true
+:revealjs_center: true
+:revealjs_history: true
+:revealjs_transition: linear
+:source-highlighter: highlightjs
+:highlightjs_style: highlight.js/styles/solarized_dark.css
+:highlightjs_style_alternative: highlight.js/styles/solarized_light.css
+// Relative to generated HTML
+:imagesdir: ./images
+////
+Relative to original asciidoc document,
+as source code is processed before creation
+of the html-file
+////
+:sources: ../..
+
+= TAXP
+Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
+
+== Thanks
+
+Slides & samples +
+https://github.com/pvdissel/talks
+
+https://twitter.com/pvdissel[@pvdissel]
