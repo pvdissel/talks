@@ -1,0 +1,595 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Patrick van Dissel"><title>Spock Framework</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="theme/bol.com/bol.com.css" id="theme"><link href="highlight.js/styles/solarized_dark.css" title="default syntax highlighting" rel="stylesheet"><link href="highlight.js/styles/solarized_light.css" title="alternative syntax highlighting" rel="alternate stylesheet"><script type="text/javascript">document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section><div id="header"><h1>Spock Framework</h1><div class="details"><span class="author" id="author">Patrick van Dissel</span><br><span class="email" id="email"><a href="https://twitter.com/pvdissel">@pvdissel</a></span><br></div></div></section><section><div class="quoteblock"><blockquote>Spock is a testing and specification framework
+ for Java and Groovy applications. What makes it stand
+ out from the crowd is its beautiful and
+ highly expressive specification language.</blockquote><div class="attribution">&#8212; Spock Framework Reference Documentation<br><cite>http://docs.spockframework.org</cite></div></div></section>
+<section><div class="quoteblock"><blockquote>Thanks to its JUnit runner, Spock is compatible
+ with most IDEs, build tools, and continuous integration servers.
+ Spock is inspired from
+ JUnit, jMock, RSpec, Groovy, Scala,
+ Vulcans, and other fascinating life forms.</blockquote><div class="attribution">&#8212; Spock Framework Reference Documentation<br><cite>http://docs.spockframework.org</cite></div></div></section>
+<section><section data-background="./images/minions-oooooh.gif"><aside class="notes"><div class="paragraph"><p>Lets start-off with some samples of Spock Specifications
+to get used to it.</p></div>
+<div class="paragraph"><p>For each sample,
+think for yourself,
+what you expect the specification does.</p></div>
+<div class="paragraph"><p>After the samples, I will explain how this all works</p></div></aside></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">def 'A new stack is empty'() {
+    def stack = new Stack()
+
+    expect:
+    stack.empty
+}</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">def 'Can push an element onto the stack'() {
+    given: 'a new stack and element'
+    def stack = new Stack()
+    def element = 'push me'
+
+    when: 'an element is pushed'
+    stack.push(element)
+
+    then: 'the stack has that element'
+    !stack.empty
+    stack.size() == 1
+    stack.peek() == element
+}</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">def 'Pop from an empty stack throws EmptyStackException'() {
+    def stack = new Stack()
+
+    when:
+    stack.pop()
+
+    then:
+    thrown(EmptyStackException)
+    stack.empty
+}</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">def '''Pop from an empty stack throws EmptyStackException
+       without a message'''() {
+    def stack = new Stack()
+
+    when:
+    stack.pop()
+
+    then:
+    def e = thrown(EmptyStackException)
+    !e.message
+    stack.empty
+}</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">def 'Events are published to all subscribers'() {
+    def subscriber1 = Mock(Subscriber)
+    def subscriber2 = Mock(Subscriber)
+    def publisher = new Publisher()
+    publisher.add(subscriber1)
+    publisher.add(subscriber2)
+
+    when:
+    publisher.fire("event")
+
+    then:
+    1 * subscriber1.receive("event")
+    1 * subscriber2.receive(_ as String)
+}</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">@Unroll
+def 'The maximum of the numbers [#a] and [#b] is [#c]'() {
+    expect:
+    Math.max(a, b) == c
+
+    where:
+    a | b || c
+    5 | 1 || 5
+    3 | 9 || 9
+}</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">def 'Adding an item to a list increases the size by one'() {
+    given: 'a list with one item'
+    def names = ['Spock']
+
+    when: 'adding one item to the list'
+    names &lt;&lt; 'Groovy'
+
+    then: 'the list size increases by one'
+    names.size() == old(names.size()) + 1
+}</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">def 'Subscriber thrown exception does not impact publisher'() {
+    def subscriber1 = Mock(Subscriber)
+    def subscriber2 = Mock(Subscriber)
+    def publisher = new Publisher()
+    publisher.add(subscriber1)
+    publisher.add(subscriber1)
+    publisher.add(subscriber2)
+
+    when:
+    publisher.fire('event')
+
+    then:
+    1 * subscriber1.receive('event')
+    1 * subscriber1.receive(_) &gt;&gt; {
+        throw new RuntimeException()
+    }
+    1 * subscriber2.receive(_ as String)
+}</code></pre></div></div></section><section data-background="./images/minions-wonderful.gif"><aside class="notes"><div class="paragraph"><p>Wasn&#8217;t that wonderful?</p></div></aside></section></section>
+<section><section id="_spock_primer"><h2>Spock Primer</h2><aside class="notes"><div class="paragraph"><p>Let&#8217;s start at the beginning</p></div></aside></section><section id="_characteristics"><h2>Characteristics</h2><div class="ulist"><ul><li class="fragment"><p>GroovyDSL</p></li><li class="fragment"><p><code>Sputnik</code>, Spock’s JUnit runner</p></li><li class="fragment"><p>Works for Java and Groovy code</p></li></ul></div>
+<aside class="notes"><div class="ulist"><ul><li><p>GroovyDSL,
+Specifications, or Specs for short
+Are written in Groovy,
+with additional Domain Specific Language syntax
+for the Specification domain.</p></li></ul></div>
+<div class="paragraph"><p>Spocks internals are pure Java,
+and therefor JVM-language agnostic.
+But the GroovyDSL ties it to the
+Groovy language for the specifications.</p></div>
+<div class="ulist"><ul><li><p>Junit Runner,
+Spocks specifications are runned with
+Spock&#8217;s JUnit runner, called <code>Sputnik</code>.
+Because of this, Spock integrates with
+every tool that supports JUnit.
+But as Spock supports way more than
+Junit, the integration may not be always
+be optimal.</p></li><li><p>Works for Java and Groovy code,
+Groovy is a multi-faceted language for the JVM
+and can largely be viewed as a superset of Java.
+Therefor Groovy is easy to learn for Java developers,
+and makes it possible
+to test Java and Groovy code with Spock</p></li></ul></div></aside></section><section id="_characteristics_2"><h2>Characteristics</h2><div class="ulist"><ul><li class="fragment"><p>Specification-based<br>
+(Specification by Example? BDD?)</p></li><li class="fragment"><p>Data Driven Testing<br>
+with data providers and tables</p></li><li class="fragment"><p>Interaction Based Testing<br>
+with build-in support for<br>
+mocking, stubbing and spying</p></li></ul></div>
+<aside class="notes"><div class="ulist"><ul><li><p>Specification-based,
+Spock is Specification-based,
+You can also call it
+Specification-by-Example
+or Behaviour Driven Development.</p></li></ul></div>
+<div class="paragraph"><p>The idea is, that you describe
+how you expect the
+System-under-Specification, to react.</p></div>
+<div class="paragraph"><p>As you&#8217;ve seen in the samples,
+the Specification DSL is very expressive,
+but you&#8217;re not forced to go all the way</p></div>
+<div class="ulist"><ul><li><p>Data Driven Testing,
+The Specification DSL has a specific
+syntax for data providers
+and even tables to acts as data providers</p></li><li><p>Interaction Based Testing,
+Spock includes a mocking, stubbing and
+spying framework
+which is lenient by default, like Mockito
+and can be as powerful as PowerMock</p></li></ul></div></aside></section><section id="_imports"><h2>Imports</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">import spock.lang.*</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Package <code>spock.lang</code> contains the most
+important types for writing specifications.</p></div></aside></section><section id="_specification"><h2>Specification</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">import spock.lang.Specification
+
+class MyFirstSpec extends Specification {
+    // fields
+    // fixture methods
+    // feature methods
+    // helper methods
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>A specification is represented as a
+Groovy class that extends from <code>spock.lang.Specification</code>.</p></div>
+<div class="paragraph"><p>The name of a specification usually relates to the
+system or system operation described
+by the specification.</p></div>
+<div class="paragraph"><p>For example, <code>CustomerSpec</code>, <code>H264VideoPlayback</code>,
+and <code>ASpaceshipAttackedFromTwoSides</code>
+are all reasonable names for a specification.</p></div>
+<div class="paragraph"><p>There are no standards to the specification
+class name, no required "Test" on a specific
+location in the name.
+Just extend from <code>Specification</code></p></div></aside></section><section id="_instance_fields"><h2>Instance Fields</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">class InstanceFields extends Specification {
+    def obj = new ClassUnderSpecification()
+    def coll = new Collaborator()
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Instance fields are a good place to store objects belonging
+to the specification&#8217;s fixture. It is good practice to
+initialize them right at the point of declaration.
+Or in the equivalent <code>setup()</code> method.</p></div>
+<div class="paragraph"><p>Objects stored into instance fields are
+<em>not</em> shared between feature methods.
+Instead, every feature method gets its own object.
+This helps to isolate feature methods from each other.</p></div></aside></section><section id="_shared_fields"><h2>Shared Fields</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">class SharedFields extends Specification {
+    @Shared
+    def res = new VeryExpensiveResource()
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Sometimes you need to share an object between feature methods.
+For example, the object might be very expensive to create,
+or you might want your feature methods to interact with each other.
+To achieve this, declare a <code>@Shared</code> field.
+Again it&#8217;s best to initialize the field right at the point of declaration.
+Or in the equivalent <code>setupSpec()</code> method.</p></div></aside></section><section id="_static_fields"><h2>Static Fields</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">class StaticFields extends Specification {
+    static final PI = 3.141592654
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Static fields should only be used for constants.
+Otherwise shared fields are preferable,
+because their semantics with respect to sharing are more well-defined.</p></div></aside></section><section id="_fixture_methods"><h2>Fixture Methods</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">class FixtureMethods extends Specification {
+    def setup() {}        // run before every feature method
+    def cleanup() {}      // run after every feature method
+
+    def setupSpec() {}    // run before the first feature method
+    def cleanupSpec() {}  // run after the last feature method
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Fixture methods are responsible for
+setting up and cleaning up the environment in which feature methods are run.</p></div>
+<div class="paragraph"><p>Usually it&#8217;s a good idea to use a
+fresh fixture for every feature method,
+which is what the <code>setup()</code> and <code>cleanup()</code>
+methods are for.</p></div>
+<div class="paragraph"><p>Occasionally it makes sense for feature methods to share a fixture,
+which is achieved by using shared fields
+together with the <code>setupSpec()</code> and <code>cleanupSpec()</code> methods.
+All fixture methods are optional.</p></div>
+<div class="paragraph"><p>Note: The <code>setupSpec()</code> and <code>cleanupSpec()</code> methods may not reference non-shared instance fields.</p></div></aside></section><section id="_feature_methods"><h2>Feature Methods</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">class FeatureMethods extends Specification {
+    def 'pushing an element on the stack'() {
+        // blocks go here
+    }
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Feature methods are the heart of a specification.
+They describe the features that you expect to
+find in the system under specification.
+By convention, feature methods are named with String literals. Try to choose
+good names for your feature methods, and feel free to use any characters you like!</p></div></aside></section><section id="_feature_methods_2"><h2>Feature Methods</h2><div class="dlist"><dl><dt class="hdlist1">Phases</dt><dd><div class="olist arabic"><ol class="arabic"><li><p>Set up the feature&#8217;s fixture</p></li><li><p>Provide a <strong><em>stimulus</em></strong> to the system under specification</p></li><li><p>Describe the <strong><em>response</em></strong> expected from the system</p></li><li><p>Clean up the feature&#8217;s fixture</p></li></ol></div></dd></dl></div>
+<aside class="notes"><div class="paragraph"><p>Conceptually, a feature method consists of four phases:</p></div>
+<div class="olist arabic"><ol class="arabic"><li><p>Set up the feature&#8217;s fixture</p></li><li><p>Provide a <strong><em>stimulus</em></strong> to the system under specification</p></li><li><p>Describe the <strong><em>response</em></strong> expected from the system</p></li><li><p>Clean up the feature&#8217;s fixture</p></li></ol></div>
+<div class="paragraph"><p>Whereas the first and last phases are optional,
+the stimulus and response phases are always present
+and may occur more than once.</p></div></aside></section></section>
+<section><section id="_blocks"><h2>Blocks</h2><div class="imageblock" style=""><div class="content"><img src="./images/Blocks2Phases.png" alt="Blocks2Phases"></div></div><aside class="notes"><div class="paragraph"><p>Spock has built-in support for implementing each of
+the conceptual phases of a feature method.</p></div>
+<div class="paragraph"><p>A feature method must have at least one explicit
+(i.e. labelled) block.
+Blocks divide a method into distinct sections,
+and cannot be nested.</p></div></aside></section><section id="_setup_blocks"><h2>Setup Blocks</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">setup:
+def stack = new Stack()</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">given:
+def stack = new Stack()</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">def stack = new Stack()</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>The <code>setup</code> block is where you do any setup work
+for the feature that you are describing.</p></div>
+<div class="paragraph"><p>It is an optional block
+and has no special semantics.</p></div>
+<div class="paragraph"><p>The <code>given:</code> label is an alias to the <code>setup:</code> label</p></div></aside></section><section id="_when_and_then_blocks"><h2>When and Then Blocks</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">when:   // stimulus
+then:   // response</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>The <code>when</code> and <code>then</code> blocks always occur together.
+They describe a stimulus and the expected response.
+Whereas <code>when</code> blocks may contain arbitrary code,
+<code>then</code> blocks are restricted to
+<em>conditions</em>,
+<em>exception conditions</em>,
+<em>interactions</em>,
+and variable definitions.
+A feature method may contain multiple pairs of <code>when-then</code> blocks.</p></div></aside></section><section id="_conditions"><h2>Conditions</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">def 'Can push an element onto the stack'() {
+    given: 'a new stack and element'
+    def stack = new Stack()
+    def element = 'push me'
+
+    when: 'an element is pushed'
+    stack.push(element)
+
+    then: 'the stack has that element'
+    !stack.empty
+    stack.size() == 1
+    stack.peek() == element
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Conditions describe an expected state,
+much like JUnit&#8217;s assertions.
+However, conditions are written as plain boolean expressions,
+according to the Groovy-truth.
+Eliminating the need for explicit assertions.</p></div></aside></section><section id="_condition_feedback"><h2>Condition Feedback</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">Condition not satisfied:
+
+stack.size() == 2
+|     |      |
+|     1      false
+[push me]</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>As you can see, Spock captures all values produced
+during the evaluation of a condition,
+and presents them in an easily digestible form.</p></div>
+<div class="paragraph"><p>And in IntelliJ you can see a diff
+between the values.
+Where <code>stack.size()</code> is the actual value,
+and the <code>2</code> is the expected value.</p></div></aside></section><section id="_exception_conditions"><h2>Exception Conditions</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">def '''Pop from an empty stack throws EmptyStackException
+       without a message'''() {
+    def stack = new Stack()
+
+    when:
+    stack.pop()
+
+    then:
+    def e = thrown(EmptyStackException)
+    !e.message
+    stack.empty
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Exception conditions are used to describe that
+a <code>when</code> block should throw an exception.</p></div>
+<div class="paragraph"><p>There&#8217;s the <code>thrown()</code> and <code>notThrown</code></p></div></aside></section><section id="_expect_blocks"><h2>Expect Blocks</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">expect:
+Math.max(1, 2) == 2</code></pre></div></div>
+<div class="paragraph"><p><strong>vs</strong></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">when:
+def x = Math.max(1, 2)
+
+then:
+x == 2</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>An <code>expect</code> block is more limited than a <code>then</code> block,
+in that it may only contain conditions and variable definitions.</p></div>
+<div class="paragraph"><p>It is useful in situations where it is
+more natural to describe stimulus
+and expected response in a single expression.</p></div>
+<div class="paragraph"><p>As a guideline, use
+<code>when-then</code> to describe methods with side effects,
+and <code>expect</code> to describe purely functional methods.</p></div></aside></section><section id="_helper_methods"><h2>Helper Methods</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">def 'Offered PC matches preferred configuration'() {
+    when:
+    def pc = shop.buyPc()
+
+    then:
+    matchesPreferredConfiguration(pc)
+}
+
+void matchesPreferredConfiguration(PC pc) {
+    assert pc.vendor == 'Sunny'
+    assert pc.clockRate &gt;= 2333
+    assert pc.ram &gt;= 4096
+    assert pc.os == 'Linux'
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>If you factor out implicit conditions to helper methods,
+you must make the conditions explicit,
+with the <code>assert</code> keyword</p></div></aside></section></section>
+<section><section id="_specifications_as_documentation"><h2>Specifications as Documentation</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">def 'Adding an item to a list increases the size by one'() {
+    given: 'a list with one item'
+    def names = ['Spock']
+
+    when: 'adding one item to the list'
+    names &lt;&lt; 'Groovy'
+
+    then: 'the list size increases by one'
+    names.size() == old(names.size()) + 1
+}</code></pre></div></div><aside class="notes"><div class="paragraph"><p>Well-written specifications are a valuable source of information,
+and can provide a Behaviour Driven Development style specification.</p></div></aside></section><section id="_bdd_style_reports"><h2>BDD-style Reports</h2><div class="dlist"><dl><dt class="hdlist1"><a href="https://github.com/renatoathaydes/spock-reports"><code>spock-reports</code></a> extension for BDD-style reports</dt><dd><div class="ulist"><ul><li><p><a href="http://codepen.io/renatoathaydes/full/ihGgt">Feature Report</a></p></li><li><p><a href="http://codepen.io/renatoathaydes/full/mKckz">Summary Report</a></p></li></ul></div></dd></dl></div>
+<aside class="notes"><div class="paragraph"><p>Block descriptions are not only present in source code,
+but are also available to the Spock runtime.
+Currently, Spock doesn&#8217;t do anything with these.
+But this will change.
+The <code>spock-reports</code> extension used this for BDD-style reports,
+and will probably be included into a future Spock release</p></div></aside></section></section>
+<section id="_data_driven_testing" data-background="./images/minions-awesome.gif"><h2>Data Driven Testing</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">@Unroll
+def 'The maximum of the numbers [#a] and [#b] is [#c]'() {
+    expect:
+    Math.max(a, b) == c
+
+    where:
+    a | b || c
+    5 | 1 || 5
+    3 | 9 || 9
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>A <code>where</code> block always comes last in a method, and may not be repeated.
+It is used to write data-driven feature methods.</p></div>
+<div class="paragraph"><p>For all details, check the "Data Driven Testing"
+chapter of the Spock documentation.</p></div></aside></section>
+<section id="_interaction_based_testing"><h2>Interaction Based Testing</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">def 'Events are published to all subscribers'() {
+    def subscriber1 = Mock(Subscriber)
+    def subscriber2 = Mock(Subscriber)
+    def publisher = new Publisher()
+    publisher.add(subscriber1)
+    publisher.add(subscriber2)
+
+    when:
+    publisher.fire("event")
+
+    then:
+    1 * subscriber1.receive("event")
+    1 * subscriber2.receive(_ as String)
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Whereas conditions describe an object&#8217;s state,
+interactions describe how objects communicate with each other.</p></div>
+<div class="paragraph"><p>This is what you test with mocking, stubbing and spying.
+For all details, check the "Interaction Based Testing"
+chapter of the Spock documentation.</p></div></aside></section>
+<section><section id="_extensions" data-background="./images/minions-shake-light.gif"><h2>Extensions</h2><aside class="notes"><div class="paragraph"><p>Spock is very extensible.
+Some bundled extensions, are..</p></div></aside></section><section id="_ignore_require"><h2>Ignore / Require</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">@spock.lang.Ignore("Reason")
+def "my feature"() { ... }</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">@spock.lang.IgnoreRest
+def "I'll run"() { ... }</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">@spock.lang.IgnoreIf({ os.windows })
+def "I'll run everywhere but on Windows"() { ... }</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">@spock.lang.Requires({ os.windows })
+def "I'll only run on Windows"() { ... }</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>To make predicates easier to read and write,<br>
+the following properties are available inside the closure:</p></div>
+<div class="ulist"><ul><li><p><code>sys</code> A map of all system properties</p></li><li><p><code>env</code> A map of all environment variables</p></li><li><p><code>os</code> Information about the operating system<br>
+(see <code>spock.util.environment.OperatingSystem)</code></p></li><li><p><code>jvm</code> Information about the JVM<br>
+(see <code>spock.util.environment.Jvm</code>)</p></li></ul></div></aside></section><section id="_timeout"><h2>Timeout</h2><div class="paragraph"><p>To fail a feature method, fixture, or class<br>
+that exceeds a given execution duration,<br>
+use <code>spock.lang.Timeout</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">@Timeout(10)
+class TimedSpec extends Specification {
+    def "I fail after ten seconds"() { ... }
+    def "Me too"() { ... }
+
+    @Timeout(value = 250, unit = TimeUnit.MILLISECONDS)
+    def "I fail much faster"() { ... }
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>When applied to a feature method,<br>
+the timeout is per execution of one iteration,<br>
+excluding time spent in fixture methods.</p></div>
+<div class="paragraph"><p>Applying <code>Timeout</code> to a spec class<br>
+has the same effect as applying it to each feature<br>
+that is not already annotated with Timeout,<br>
+excluding time spent in fixture methods.</p></div>
+<div class="paragraph"><p>When a timeout is reported to the user,<br>
+the stack trace shown reflects the execution stack<br>
+of the test framework when the timeout was exceeded.</p></div></aside></section><section id="_stepwise"><h2>Stepwise</h2><div class="paragraph"><p>To execute features in the order that they are declared,<br>
+use <code>spock.lang.Stepwise</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">@Stepwise
+class RunInOrderSpec extends Specification {
+    def "I run first"()  { ... }
+    def "I run second"() { ... }
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p><code>Stepwise</code> only affects the class carrying the annotation;<br>
+not sub or super classes.<br></p></div>
+<div class="paragraph"><p>Features after the first failure are skipped.</p></div></aside></section><section id="_title_and_narrative"><h2>Title and Narrative</h2><div class="paragraph"><p>To attach a natural-language name to a spec,<br>
+use <code>spock.lang.Title</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">@Title("This is easy to read")
+class ThisIsHarderToReadSpec { ... }</code></pre></div></div>
+<div class="paragraph"><p>To attach a natural-language description to a spec,<br>
+use <code>spock.lang.Narrative</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">@Narrative(""""
+As a user
+I want foo
+So that bar
+""")
+class GiveTheUserFooSpec { ... }</code></pre></div></div></section><section id="_subject"><h2>Subject</h2><div class="paragraph"><p>To indicate one or more subjects of a spec,<br>
+use <code>spock.lang.Subject</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">@Subject([Foo, Bar])
+class MySpec { ... }</code></pre></div></div>
+<div class="paragraph"><p><code>Subject</code> can be applied to fields and local variables</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">@Subject
+Foo myFoo</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p><code>Subject</code> currently has only informational purposes.</p></div></aside></section><section id="_issue"><h2>Issue</h2><div class="paragraph"><p>To indicate that a feature or spec<br>
+relates to one or more issues in an external tracking system,<br>
+use <code>spock.lang.Issue</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">@Issue("http://my.issues.org/FOO-1")
+class MySpec {
+    @Issue("http://my.issues.org/FOO-2")
+    def "Foo should do bar"() { ... }
+
+    @Issue(["http://my.issues.org/FOO-3",
+            "http://my.issues.org/FOO-4"])
+    def "I have two related issues"() { ... }
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p><code>Issue</code> currently has only informational purposes.</p></div></aside></section><section id="_use"><h2>Use</h2><div class="paragraph"><p>To activate one or more Groovy categories<br>
+within the scope of a feature method or spec,<br>
+use <code>spock.util.mop.Use</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">class ListExtensions {
+    static avg(List list) { list.sum() / list.size() }
+}
+
+class MySpec extends Specification {
+    @Use(listExtensions)
+    def "can use avg() method"() {
+        expect:
+        [1, 2, 3].avg() == 2
+    }
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>This can be useful for stubbing of dynamic methods,
+which are usually provided by the runtime environment
+(e.g. Grails). It has no effect when applied to a helper
+method. However, when applied to a spec class,
+it will also affect its helper methods.</p></div></aside></section><section id="_confinemetaclasschanges"><h2>ConfineMetaClassChanges</h2><div class="paragraph"><p>To confine meta class changes to the scope of a
+feature method or spec class,<br>
+use <code>spock.util.mop.ConfineMetaClassChanges</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">@Stepwise
+class FooSpec extends Specification {
+    @ConfineMetaClassChanges
+    def "I run first"() {
+        when:
+        String.metaClass.someMethod = { delegate }
+
+        then:
+        String.metaClass.hasMetaMethod('someMethod')
+    }
+
+    def "I run second"() {
+        when:
+        "Foo".someMethod()
+
+        then:
+        thrown(MissingMethodException)
+    }
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>When applied to a spec class,<br>
+the meta classes are restored to the state<br>
+that they were in before <code>setupSpec()</code> was executed,<br>
+after cleanupSpec() is executed.</p></div>
+<div class="paragraph"><p>When applied to a feature method,<br>
+the meta classes are restored to the state<br>
+as they were after <code>setup()</code> was executed,<br>
+before <code>cleanup()</code> is executed.</p></div></aside></section><section id="_autocleanup"><h2>AutoCleanup</h2><div class="paragraph"><p>Automatically clean up a field or property<br>
+at the end of its lifetime<br>
+by using <code>spock.lang.AutoCleanup</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">@AutoCleanup('dispose')
+@AutoCleanup(quiet = true)</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>By default, an object is cleaned up by invoking its parameterless <code>close()</code> method.<br>
+If some other method should be called instead, override the annotation’s value attribute:</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">// invoke foo.dispose()
+@AutoCleanup(“dispose”) def foo</code></pre></div></div>
+<div class="paragraph"><p>If multiple fields or properties are annotated with <code>AutoCleanup</code>,<br>
+their objects are cleaned up sequentially,<br>
+in reverse field/property declaration order,<br>
+starting from the most derived class<br>
+and walking up the inheritance chain.</p></div>
+<div class="paragraph"><p>If a cleanup operation fails with an exception,<br>
+the exception is reported by default,<br>
+and cleanup proceeds with the next annotated object.<br>
+To prevent cleanup exceptions from being reported,<br>
+override the annotation’s <code>quite</code> attribute</p></div></aside></section></section>
+<section><section id="_comparison_to_junit"><h2>Comparison to JUnit</h2><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><thead><tr><th class="tableblock halign-left valign-top">Spock</th><th class="tableblock halign-left valign-top">JUnit</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Specification</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Test class</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>setup()</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><code>@Before</code></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>cleanup()</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><code>@After</code></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>setupSpec()</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><code>@BeforeClass</code></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>cleanupSpec()</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><code>@AfterClass</code></p></td></tr></tbody></table></section><section><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><thead><tr><th class="tableblock halign-left valign-top">Spock</th><th class="tableblock halign-left valign-top">JUnit</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Feature</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Test</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Feature method</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Test method</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Data-driven feature</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Theory</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Condition</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Exception condition</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><code>@Test(expected=&#8230;&#8203;)</code></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Interaction</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Mock expectation (e.g. in Mockito)</p></td></tr></tbody></table>
+<aside class="notes"><div class="paragraph"><p>Although Spock uses a different terminology,
+many of its concepts and features are inspired from JUnit.
+Here is a rough comparison</p></div></aside></section><section data-background="./images/minions-laugh-bottom.gif"><aside class="notes"><div class="paragraph"><p>So, that&#8217;s it</p></div></aside></section></section>
+<section data-background="./images/minions-exception.gif"><aside class="notes"><div class="paragraph"><p>Do you feel like&#8230;&#8203;?</p></div></aside></section>
+<section data-background="./images/minions-kiss.gif"><aside class="notes"><div class="paragraph"><p>Or do you love it so far?</p></div></aside></section>
+<section><section id="_why_spock"><h2>Why Spock?</h2><div class="dlist"><dl><dt class="hdlist1">Easy to learn</dt><dd><p>If you know Java and JUnit, you are almost ready to go</p></dd><dt class="hdlist1">Powered by Groovy</dt><dd><p>Java&#8217;s dynamic companion lets you do more in less time</p></dd><dt class="hdlist1">Eliminates waste</dt><dd><p>No assertion API. No record/replay mocking API.
+No superfluous annotations.
+Everything is questioned, and only the essential is kept</p></dd></dl></div></section><section><div class="dlist"><dl><dt class="hdlist1">Detailed information</dt><dd><p>Spock' runtime collects a wealth of information,
+and presents it to you when needed</p></dd><dt class="hdlist1">Designed for use</dt><dd><p>It&#8217;s designed from a user&#8217;s perspective</p></dd><dt class="hdlist1">Open-minded</dt><dd><p>Test-first? Test-last? Unit-level? Integration-level? TDD? BDD?<br>
+It tries to give you the flexibility to do it your way</p></dd></dl></div></section><section><div class="dlist"><dl><dt class="hdlist1">Beautiful language</dt><dd><p>Express your thoughts in a beautiful and
+highly expressive specification language</p></dd><dt class="hdlist1">Extensible for everyone</dt><dd><p>With Spock&#8217;s interception-based extension mechanism,
+you can easily create your own extensions</p></dd><dt class="hdlist1">Compatible with JUnit</dt><dd><p>Leverage JUnit&#8217;s reporting capabilities</p></dd><dt class="hdlist1">Learns from the history</dt><dd><p>Combines the best features of proven tools like JUnit,
+jMock, and RSpec, and innovates on top of them</p></dd></dl></div></section></section>
+<section id="_resources"><h2>Resources</h2><div class="ulist"><ul><li><p><a href="http://spockframework.org" class="bare">http://spockframework.org</a></p></li><li><p>Spock playground<br>
+<a href="http://webconsole.spockframework.org" class="bare">http://webconsole.spockframework.org</a></p></li><li><p>Java Testing with Spock (book)<br>
+<a href="http://manning.com/kapelonis/" class="bare">http://manning.com/kapelonis/</a></p></li><li><p>Spock Reports Extension<br>
+<a href="https://github.com/renatoathaydes/spock-reports" class="bare">https://github.com/renatoathaydes/spock-reports</a></p></li><li><p><a href="http://mrhaki.blogspot.nl/search/label/Spock" class="bare">http://mrhaki.blogspot.nl/search/label/Spock</a></p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Find more info here</p></div></aside></section>
+<section id="_thanks"><h2>Thanks</h2><div class="paragraph"><p>Slides &amp; samples<br>
+<a href="https://github.com/pvdissel/talks" class="bare">https://github.com/pvdissel/talks</a></p></div>
+<div class="paragraph"><p><a href="https://twitter.com/pvdissel">@pvdissel</a></p></div></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script type="text/javascript">// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, blood, league, moon, night, serif, simple, sky, solarized, white)
+  theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'linear',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'default',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'reveal.js/plugin/math/math.js', async: true}
+  ]
+});</script></body></html>

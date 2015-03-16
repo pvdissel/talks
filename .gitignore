@@ -1,7 +1,0 @@
-.gradle
-build/
-gradle.properties
-*.iml
-.idea
-**/reveal.js/**/.sass-cache
-**/reveal.js/**/node_modules
