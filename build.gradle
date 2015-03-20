@@ -1,14 +1,37 @@
 buildscript {
     repositories {
+        mavenLocal()
         jcenter()
     }
 
     dependencies {
         classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
+        classpath 'org.ajoberstar:gradle-git:1.1.0'
     }
 }
 
 import org.asciidoctor.gradle.AsciidoctorTask
+
+// TODO: Somehow create index.html file based on subprojects, linking to each presentation
+apply plugin: "org.ajoberstar.github-pages"
+githubPages {
+    repoUri = 'git@github.com:pvdissel/talks.git'
+    pages {
+        subprojects.each { p ->
+            // TODO: Use output path from 'presentation' task, instead of hardcoding
+            from("${p.buildDir}/asciidoc/html5/") {
+                rename('presentation.html', 'index.html')
+                into p.name
+            }
+        }
+    }
+}
+gradle.afterProject { project, projectState ->
+    project.tasks.findAll { it.name == 'presentation' }.each {
+        //rootProject.prepareGhPages.dependsOn it
+        rootProject.publishGhPages.dependsOn it
+    }
+}
 
 subprojects {
     repositories.jcenter()
