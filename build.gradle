@@ -25,8 +25,29 @@ githubPages {
                 into p.name
             }
         }
+
+        def index = File.createTempFile('index', '.html', file("${buildDir}/tmp"))
+        index.createNewFile()
+        index.withWriter { c ->
+            c.writeLine '<html>'
+            c.writeLine '<body>'
+            c.writeLine '<h1>Talks</h1>'
+            c.writeLine '<dl>'
+            subprojects.each { p ->
+                def (date, title, location) = p.name.split('_')
+                c.writeLine """<dt><a href="${p.name}/">${title.capitalize()}</a></dt>"""
+                c.writeLine "<dd>${date} at ${location}</dd>"
+            }
+            c.writeLine '</dl>'
+            c.writeLine '</body>'
+            c.writeLine '</html>'
+        }
+        from(index) {
+            rename(/.*/, 'index.html')
+        }
     }
 }
+
 gradle.afterProject { project, projectState ->
     project.tasks.findAll { it.name == 'presentation' }.each {
         //rootProject.prepareGhPages.dependsOn it
