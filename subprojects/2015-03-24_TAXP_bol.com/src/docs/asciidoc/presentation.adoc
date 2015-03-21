@@ -20,30 +20,9 @@ of the html-file
 = Test Acceptance X-production Production
 Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
 
-== TAXP
-
-== Diagram
-
-[ditaa, "asciidoctor-process"]
-----
-                   +-------------+
-                   | Asciidoctor |-------+
-                   |   diagram   |       |
-                   +-------------+       | PNG out
-                       ^                 |
-                       | ditaa in        |
-                       |                 v
- +--------+   +--------+----+    /---------------\
- |        |---+ Asciidoctor +--->|               |
- |  Text  |   +-------------+    |   Beautiful   |
- |Document|   |   !magic!   |    |    Output     |
- |     {d}|   |             |    |               |
- +---+----+   +-------------+    \---------------/
-     :                                   ^
-     |          Lots of work             |
-     +-----------------------------------+
-----
-
+include::taxp.adoc[leveloffset=+1]
+include::sprinthop.adoc[leveloffset=+1]
+include::jobstructure.adoc[leveloffset=+1]
 
 == Thanks
 

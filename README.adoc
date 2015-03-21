@@ -33,3 +33,4 @@ Links to handy resources for asciidoc presentations writing:
 - http://asciidoctor.org/docs/asciidoc-writers-guide/
 - https://github.com/asciidoctor/asciidoctor-reveal.js
 - http://asciidoctor.org/docs/asciidoctor-gradle-plugin/
+- https://github.com/asciidoctor/asciidoctor-diagram/
