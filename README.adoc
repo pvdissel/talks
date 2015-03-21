@@ -2,7 +2,11 @@
 
 by Patrick van Dissel
 
-See the `subprojects` directory for the overview of presentations.
+Just want to view the presentations?
+Go to: http://ikoodi.nl/talks
+
+Want to see the sources?
+Take a look in the `subprojects` directory for the specific presentations.
 
 == Usage
 

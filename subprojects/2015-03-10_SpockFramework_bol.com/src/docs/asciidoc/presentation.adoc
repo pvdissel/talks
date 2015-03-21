@@ -1031,6 +1031,7 @@ Find more info here
 == Thanks
 
 Slides & samples +
+http://ikoodi.nl/talks +
 https://github.com/pvdissel/talks
 
 https://twitter.com/pvdissel[@pvdissel]

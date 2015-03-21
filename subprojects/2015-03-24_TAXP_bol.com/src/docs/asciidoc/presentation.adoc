@@ -27,6 +27,7 @@ include::jobstructure.adoc[leveloffset=+1]
 == Thanks
 
 Slides & samples +
+http://ikoodi.nl/talks +
 https://github.com/pvdissel/talks
 
 https://twitter.com/pvdissel[@pvdissel]
