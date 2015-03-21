@@ -17,8 +17,33 @@ of the html-file
 ////
 :sources: ../..
 
-= TAXP
+= Test Acceptance X-production Production
 Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
+
+== TAXP
+
+== Diagram
+
+[ditaa, "asciidoctor-process"]
+----
+                   +-------------+
+                   | Asciidoctor |-------+
+                   |   diagram   |       |
+                   +-------------+       | PNG out
+                       ^                 |
+                       | ditaa in        |
+                       |                 v
+ +--------+   +--------+----+    /---------------\
+ |        |---+ Asciidoctor +--->|               |
+ |  Text  |   +-------------+    |   Beautiful   |
+ |Document|   |   !magic!   |    |    Output     |
+ |     {d}|   |             |    |               |
+ +---+----+   +-------------+    \---------------/
+     :                                   ^
+     |          Lots of work             |
+     +-----------------------------------+
+----
+
 
 == Thanks
 
