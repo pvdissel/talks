@@ -28,11 +28,12 @@ dependencies {
     testCompile libraries.spock
 }
 
-presentation.resources {
-    into('sources') {
-        from "${projectDir}/src/main/groovy"
-        from "${projectDir}/src/test/groovy"
+presentation {
+    dependsOn check
+    resources {
+        into('sources') {
+            from "${projectDir}/src/main/groovy"
+            from "${projectDir}/src/test/groovy"
+        }
     }
 }
-
-presentation.dependsOn(check)

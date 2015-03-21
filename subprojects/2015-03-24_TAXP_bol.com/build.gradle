@@ -31,17 +31,18 @@ dependencies {
     testCompile libraries.spock
 }
 
-presentation.resources {
-    into('sources') {
-        from "${projectDir}/src/main/groovy"
-        from "${projectDir}/src/test/groovy"
+presentation {
+    dependsOn check
+    resources {
+        into('sources') {
+            from "${projectDir}/src/main/groovy"
+            from "${projectDir}/src/test/groovy"
+        }
+        // Include generated diagram images
+        from(presentation.sourceDir) {
+            exclude '**/*.adoc'
+        }
     }
-    // Include generated diagram images
-    from(presentation.sourceDir) {
-        exclude '**/*.adoc'
-    }
-}
-presentation.with {
     dependsOn jrubyPrepareGems
     gemPath = jrubyPrepareGems.outputDir
     requires << 'asciidoctor-diagram'
@@ -53,5 +54,3 @@ presentation.with {
         file("${presentation.sourceDir}/images").deleteDir()
     }
 }
-
-presentation.dependsOn(check)
