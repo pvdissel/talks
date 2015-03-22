@@ -47,6 +47,16 @@ include::jobs.adoc[leveloffset=+1]
 include::generated.adoc[leveloffset=+1]
 include::next-steps.adoc[leveloffset=+1]
 
+== Resources
+
+* Confluence
+** http://bolnl-confluence/display/scrumproces/DPI[scrumproces/DPI]
+** http://bolnl-confluence/display/scrumproces/Creating+your+own+GIT+repositories[Creating your own GIT repositories]
+** http://bolnl-confluence/display/scrumproces/Managing+your+own+pipeline+configuration+-+TAXP+job+generator[Managing your own pipeline configuration]
+* https://github.com/pvdissel/talk-jenkins-jobdsl[Cultivating the Jenkins job jungle with Groovy @ JFall 2014]
+
+Give feedback & discuss ideas
+
 == Thanks
 
 Slides +

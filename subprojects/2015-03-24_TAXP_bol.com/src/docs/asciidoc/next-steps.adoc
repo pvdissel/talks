@@ -16,3 +16,8 @@
 
 [data-background={imagesdir}/mayfly-feature.png]
 = MayFly
+
+== !
+
+- pipeline config in project repo
+- project team in control of pipeline
