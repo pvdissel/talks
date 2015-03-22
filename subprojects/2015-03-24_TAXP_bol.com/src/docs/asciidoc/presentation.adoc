@@ -20,13 +20,35 @@ of the html-file
 = Test Acceptance X-production Production
 Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
 
-include::taxp.adoc[leveloffset=+1]
-include::sprinthop.adoc[leveloffset=+1]
+== TAXP
+
+[ditaa]
+----
+
+   +--------+     +--------+     +--------+     +--------+
+   |        |     |        |     |        |     |        |
+   |  Test  +---->|  ACC   +---->|  XPR   +---->|  PRO   |
+   |        |     |        |     |        |     |        |
+   +--------+     +--------+     +--------+     +--------+
+
+----
+
+[NOTE.speaker]
+--
+TAXP stands for the different environments we have,
+Test, Acceptance, X-Production, Production
+
+I expect this is nothing new, and you know
+the differences between the environments.
+--
+
 include::jobstructure.adoc[leveloffset=+1]
+include::jobs.adoc[leveloffset=+1]
+include::generated.adoc[leveloffset=+1]
 
 == Thanks
 
-Slides & samples +
+Slides +
 http://ikoodi.nl/talks +
 https://github.com/pvdissel/talks
 

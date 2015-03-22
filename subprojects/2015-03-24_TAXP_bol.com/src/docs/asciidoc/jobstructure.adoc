@@ -1,3 +1,4 @@
+[data-transition=fade]
 = Jenkins
 
 [ditaa]
@@ -11,8 +12,58 @@
 
 ----
 
+[NOTE.speaker]
+--
+Viewed from the Jenkins perspective,
+there are only three environments.
+Test, Acceptance, X-Production/Production aka XprPro
+
+As you build fixes for PRO on XPR,
+and the deployable from XPR is also deployed to PRO
+--
+
 [data-transition=fade]
-== Stage per environment
+== Pipeline
+
+[ditaa]
+----
+
+   +--------+     +--------+     +--------+-----+--------+
+   |        |     |        |     |                       |
+   |  Test  +---->|  ACC   +---->|  XPR   +---->   PRO   |
+   |        |     |        |     |                       |
+   +--------+     +--------+     +--------+-----+--------+
+
+----
+
+[NOTE.speaker]
+--
+The process by which
+code or configuration
+progresses from the
+developer's workstation
+into the production environment.
+
+The "pipeline".
+
+--
+
+[data-transition=fade]
+== Gates
+
+[ditaa]
+----
+
+   +--------+  |   +--------+  |   +--------+-----+--------+
+   |        |  |   |        |  |   |                       |
+   |  Test  +--|-->|  ACC   +--|-->|  XPR   +---->   PRO   |
+   |        |  |   |        |  |   |                       |
+   +--------+  |   +--------+  |   +--------+-----+--------+
+
+----
+
+[data-transition=fade]
+== Stages
 
 [ditaa]
 ----
@@ -24,6 +75,11 @@
    +--------+               +--------+
 
 ----
+
+[NOTE.speaker]
+--
+
+--
 
 [data-transition=fade]
 == For TEST
@@ -58,7 +114,6 @@
    +--------+               +--------+
     ACT_API
     ACT_DB                   Deploy_ACT_DB
-
     ACT_Account_Service      Deploy_ACT
                              XL_Test_ACT_FitNesse
        ^                     Flow_Deploy_ACT
@@ -80,9 +135,8 @@
    +--------+               +--------+              | manual, and
     ACT_API                                         | scheduled at:
     ACT_DB                   Deploy_ACT_DB          |   12:00 daily
-                                                    |   19:00 evening
-    ACT_Account_Service      Deploy_ACT             |   03:00 nightly
-                             XL_Test_ACT_FitNesse   |
+    ACT_Account_Service      Deploy_ACT             |   19:00 evening
+                             XL_Test_ACT_FitNesse   |   03:00 nightly
        ^                     Flow_Deploy_ACT +------/
        |
     on push
@@ -100,9 +154,7 @@
    |   CI   +-------------->| Deploy |
    |        |               |        |
    +--------+               +--------+
-
     Branch_Acc_ACT_DB        Deploy_Acc_ACT_DB
-
     Branch_Acc_ACT_App       Deploy_Acc_ACT_App
 
 ----
@@ -118,11 +170,8 @@
    |   CI   +-------------->| Deploy |
    |        |               |        |
    +--------+               +--------+
-
     Branch_XprPro_ACT_DB     Deploy_XprPro_ACT_DB
-
     Branch_XprPro_ACT_App    Deploy_XprPro_ACT_App
-
     Branch_XprPro_ACT_DB_Prepare_Patch
 
 ----
@@ -132,15 +181,15 @@
 [ditaa]
 ----
 
-   +--------+     +--------+     +--------+-----+--------+
-   |        |     |        |     |                       |
-   |  Test  +---->|  ACC   +---->|  XPR   +---->   PRO   |
-   |        |     |        |     |                       |
-   +--------+     +--------+     +--------+-----+--------+
-   |   CI   |     |   CI   |     |   CI                  |
-   |--------|     |--------|     |-----------------------|
-   | Deploy |     | Deploy |     | Deploy                |
-   |--------|     +--------+     +-----------------------+
+   +--------+  |   +--------+  |   +--------+-----+--------+
+   |        |  |   |        |  |   |                       |
+   |  Test  +--|-->|  ACC   +--|-->|  XPR   +---->   PRO   |
+   |        |  |   |        |  |   |                       |
+   +--------+  |   +--------+  |   +--------+-----+--------+
+   |   CI   |      |   CI   |      |   CI                  |
+   |--------|      |--------|      |-----------------------|
+   | Deploy |      | Deploy |      | Deploy                |
+   |--------|      +--------+      +-----------------------+
    |Schedule|
    | Deploy |
    | + TA   |

@@ -1,0 +1,57 @@
+= ~**18** jobs per project
+
+[NOTE.speaker]
+--
+This makes an average of 18 jobs per project.
+
+Excluding the SprintHopping and System jobs
+that have to do work with or based on the projects.
+--
+
+== Juli 2014
+
+All ~**1000** jobs +
+manually configured
+
+[NOTE.speaker]
+--
+In Juli 2014,
+we had about 1000 jobs
+which were manually
+configured and maintained.
+
+With one Engineer On Duty, to
+create and maintain these jobs...
+it was a fulltime, error-prone
+no-fun task.
+Resulting in long wait times
+for you, the users.
+And we often had to do an
+all-team "service request monday"
+to temporarily clean the list
+of waiting service requests
+--
+
+== March 2015
+
+Now ~**1400** jobs +
+of which ~**1300** generated
+
+[NOTE.speaker]
+--
+Today, we have about 1400 jobs
+of which 1300 are generated.
+
+So we still got about 100 jobs
+which are manually configured.
+
+25 of them are System jobs,
+which we use for Jenkins and
+Jenkins infrastructure specific tasks.
+
+Meaning 75 are still for
+applications and libraries.
+Like:
+- WSP (~18)
+- BIZ Modules (~40)
+--
