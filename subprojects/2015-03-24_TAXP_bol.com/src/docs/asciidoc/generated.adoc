@@ -30,7 +30,8 @@ image::self-service-laundry.jpg[]
 
 [%step]
 * `Seed` job is triggered after push to `master` +
-* `Seed_Acc` and `Seed_XprPro` on push to specific branch
+* `Seed_Acc` and `Seed_XprPro` +
+  on push to specific branch
 * Seed job run takes ~1 minute +
   (unless _busy_, may take ~10 minutes)
 * Seed job updates Jenkins jobs to new state
