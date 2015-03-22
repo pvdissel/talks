@@ -1,2 +1,36 @@
 = TAXP-job-generator
 
+image::taxp-job-generator.png[]
+
+== Jenkins job generator
+
+[%step]
+- Follows TAXP standards
+- Sprinthops with the projects
+- Documented
+- Tested
+- One json file per project
+
+= !
+
+image::self-service-laundry.jpg[]
+
+== Workflow
+
+[%step]
+- Create git repositories +
+  (`System_Create_Git_Repositories`)
+- Fork `dpi/taxp-job-generator`
+- Make change on branch
+- Test/inspect locally
+- Commit && push
+- Create merge-request
+
+== Seed
+
+[%step]
+- `Seed` job is triggered after push to `master` +
+- `Seed_Acc` and `Seed_XprPro` on push to specific branch
+- Seed job run takes ~1 minute +
+  (unless _busy_, may take ~10 minutes)
+- Seed job updates Jenkins jobs to new state

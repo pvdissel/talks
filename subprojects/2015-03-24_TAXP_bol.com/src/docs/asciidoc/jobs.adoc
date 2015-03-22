@@ -34,7 +34,7 @@ of waiting service requests
 
 == March 2015
 
-Now ~**1400** jobs +
+~**1400** jobs +
 of which ~**1300** generated
 
 [NOTE.speaker]
