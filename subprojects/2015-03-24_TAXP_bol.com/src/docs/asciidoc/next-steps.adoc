@@ -1,0 +1,18 @@
+= Not perfect
+
+[%step]
+* Limited by implementation
+* No strict checking
+
+= Next steps
+
+[%step]
+* Support MotM phases
+* Strict config validation
+* Generic config
+** Custom pipelines
+** Hook into standards +
+   (eg. artifactory, rundeck, ...)
+
+[data-background={imagesdir}/mayfly-feature.png]
+= MayFly
