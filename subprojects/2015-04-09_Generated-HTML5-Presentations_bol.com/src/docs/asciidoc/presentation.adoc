@@ -1,0 +1,125 @@
+:backend: revealjs
+:revealjs_theme: black
+:revealjs_customtheme: theme/bol.com/bol.com.css
+:revealjs_control: true
+:revealjs_center: true
+:revealjs_history: true
+:revealjs_transition: none
+:revealjs_backgroundTransition: none
+:revealjs_autoSlide: 20000
+:source-highlighter: highlightjs
+:highlightjs_style: highlight.js/styles/solarized_light.css
+:highlightjs_style_alternative: highlight.js/styles/solarized_dark.css
+// Relative to generated HTML
+:imagesdir: ./images
+////
+Relative to original asciidoc document,
+as source code is processed before creation
+of the html-file
+////
+:sources: ../..
+
+= Generated HTML5 Presentations
+Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
+
+== !
+
+image::powerpoint-25years-07.jpg[]
+
+== !
+
+image::670px-PowerpointPresentation-Step-2.jpg[]
+
+== !
+
+image::ruby-on-rails-101-presentation-slides-for-a-five-day-introductory-course-67-728.jpg[]
+
+== !
+
+image::hello-i-am-a-developer.png[]
+
+== !
+
+[source,indent=0]
+----
+   == Helper Methods
+
+   [source,groovy,indent=0]
+   ----
+   include::{sources}/test/groovy/sample/HelperMethods.groovy[tag=slide]
+   ----
+
+   [NOTE.speaker]
+   --
+   If you factor out implicit conditions to helper methods,
+   you must make the conditions explicit,
+   with the `assert` keyword
+   --
+----
+
+== !
+
+image::html5-spock-helpermethods-slide.png[]
+
+== !
+
+[source,indent=0]
+----
+   [ditaa]
+   ----
+                      +-------------+
+                      | Asciidoctor |-------+
+                      |   diagram   |       |
+                      +-------------+       | PNG out
+                          ^                 |
+                          | ditaa in        |
+                          |                 v
+    +--------+   +--------+----+    /---------------\
+    |        | --+ Asciidoctor +--> |               |
+    |  Text  |   +-------------+    |   Beautiful   |
+    |Document|   |   !magic!   |    |    Output     |
+    |     {d}|   |             |    |               |
+    +---+----+   +-------------+    \---------------/
+        :                                   ^
+        |          Lots of work             |
+        +-----------------------------------+
+   ----
+----
+
+== !
+
+[ditaa]
+----
+                  +-------------+
+                  | Asciidoctor |-------+
+                  |   diagram   |       |
+                  +-------------+       | PNG out
+                      ^                 |
+                      | ditaa in        |
+                      |                 v
++--------+   +--------+----+    /---------------\
+|        | --+ Asciidoctor +--> |               |
+|  Text  |   +-------------+    |   Beautiful   |
+|Document|   |   !magic!   |    |    Output     |
+|     {d}|   |             |    |               |
++---+----+   +-------------+    \---------------/
+    :                                   ^
+    |          Lots of work             |
+    +-----------------------------------+
+----
+
+== !
+
+image::compile-presentation.png[]
+
+== !
+
+image::used-tools.png[]
+
+== !
+
+Slides +
+http://ikoodi.nl/talks +
+https://github.com/pvdissel/talks
+
+https://twitter.com/pvdissel[@pvdissel]

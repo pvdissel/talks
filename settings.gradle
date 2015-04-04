@@ -1,5 +1,6 @@
 include '2015-03-10_SpockFramework_bol.com'
 include '2015-03-24_TAXP_bol.com'
+include '2015-04-09_Generated-HTML5-Presentations_bol.com'
 
 rootProject.name = 'pvdissel-talks'
 rootProject.children.each { project ->

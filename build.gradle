@@ -26,7 +26,9 @@ githubPages {
             }
         }
 
-        def index = File.createTempFile('index', '.html', file("${buildDir}/tmp"))
+        def tmpDir = file("${buildDir}/tmp")
+        tmpDir.mkdirs()
+        def index = File.createTempFile('index', '.html', tmpDir)
         index.createNewFile()
         index.withWriter { c ->
             c.writeLine '<html>'
