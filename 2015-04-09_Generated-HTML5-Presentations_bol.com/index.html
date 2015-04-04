@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Patrick van Dissel"><title>Generated HTML5 Presentations</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="theme/bol.com/bol.com.css" id="theme"><link href="highlight.js/styles/solarized_light.css" title="default syntax highlighting" rel="stylesheet"><link href="highlight.js/styles/solarized_dark.css" title="alternative syntax highlighting" rel="alternate stylesheet"><script type="text/javascript">document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section><div id="header"><h1>Generated HTML5 Presentations</h1><div class="details"><span class="author" id="author">Patrick van Dissel</span><br><span class="email" id="email"><a href="https://twitter.com/pvdissel">@pvdissel</a></span><br></div></div></section><section><div class="imageblock" style=""><div class="content"><img src="./images/powerpoint-25years-07.jpg" alt="powerpoint 25years 07"></div></div></section>
+<section><div class="imageblock" style=""><div class="content"><img src="./images/670px-PowerpointPresentation-Step-2.jpg" alt="670px PowerpointPresentation Step 2"></div></div></section>
+<section><div class="imageblock" style=""><div class="content"><img src="./images/ruby-on-rails-101-presentation-slides-for-a-five-day-introductory-course-67-728.jpg" alt="ruby on rails 101 presentation slides for a five day introductory course 67 728"></div></div></section>
+<section><div class="imageblock" style=""><div class="content"><img src="./images/hello-i-am-a-developer.png" alt="hello i am a developer"></div></div></section>
+<section><div class="listingblock"><div class="content"><pre class="highlight"><code>== Helper Methods
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/sample/HelperMethods.groovy[tag=slide]
+----
+
+[NOTE.speaker]
+--
+If you factor out implicit conditions to helper methods,
+you must make the conditions explicit,
+with the `assert` keyword
+--</code></pre></div></div></section>
+<section><div class="imageblock" style=""><div class="content"><img src="./images/html5-spock-helpermethods-slide.png" alt="html5 spock helpermethods slide"></div></div></section>
+<section><div class="listingblock"><div class="content"><pre class="highlight"><code>[ditaa]
+----
+                   +-------------+
+                   | Asciidoctor |-------+
+                   |   diagram   |       |
+                   +-------------+       | PNG out
+                       ^                 |
+                       | ditaa in        |
+                       |                 v
+ +--------+   +--------+----+    /---------------\
+ |        | --+ Asciidoctor +--&gt; |               |
+ |  Text  |   +-------------+    |   Beautiful   |
+ |Document|   |   !magic!   |    |    Output     |
+ |     {d}|   |             |    |               |
+ +---+----+   +-------------+    \---------------/
+     :                                   ^
+     |          Lots of work             |
+     +-----------------------------------+
+----</code></pre></div></div></section>
+<section><div class="imageblock" style=""><div class="content"><img src="./images/diag-648144de4485d5ea103e90ccc721253b.png" alt="Diagram" width="530" height="280"></div></div></section>
+<section><div class="imageblock" style=""><div class="content"><img src="./images/compile-presentation.png" alt="compile presentation"></div></div></section>
+<section><div class="imageblock" style=""><div class="content"><img src="./images/used-tools.png" alt="used tools"></div></div></section>
+<section><div class="paragraph"><p>Slides<br>
+<a href="http://ikoodi.nl/talks" class="bare">http://ikoodi.nl/talks</a><br>
+<a href="https://github.com/pvdissel/talks" class="bare">https://github.com/pvdissel/talks</a></p></div>
+<div class="paragraph"><p><a href="https://twitter.com/pvdissel">@pvdissel</a></p></div></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script type="text/javascript">// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 20000,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, blood, league, moon, night, serif, simple, sky, solarized, white)
+  theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'none',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'none',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'reveal.js/plugin/math/math.js', async: true}
+  ]
+});</script></body></html>
