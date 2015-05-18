@@ -1,0 +1,278 @@
+= Groovy vs Java
+
+image::groovyduke.png[]
+
+== Default imports
+
+[source,java,indent=0]
+----
+import java.io.*;
+import java.lang.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.net.*;
+import java.util.*;
+import groovy.lang.*;
+import groovy.util.*;
+----
+
+[NOTE.speaker]
+--
+These are the default Groovy imports,
+besides the `default` and `current` packages
+that are imported in Java by default.
+
+vs. the `java.lang.*` default import of Java
+--
+
+== Multi-methods
+
+[source,java,indent=0]
+----
+int method(String arg) { return 1; }
+int method(Object arg) { return 2; }
+Object o = "Object";
+int result = method(o);
+----
+
+[source,java,indent=0]
+----
+assertEquals(2, result);
+----
+
+vs
+
+[source,groovy,indent=0]
+----
+assertEquals(1, result);
+----
+
+[NOTE.speaker]
+--
+In Groovy, the methods which will be invoked
+are chosen at runtime. This is called runtime
+dispatch or multi-methods. It means that the
+method will be chosen based on the types of
+the arguments at runtime.
+In Java, this is the opposite:
+methods are chosen at compile time,
+based on the declared types.
+
+The top is java result,
+the bottom the groovy result
+--
+
+== Array initializers
+
+[source,java,indent=0]
+----
+int[] array = { 1, 2, 3 };
+----
+
+vs
+
+[source,groovy,indent=0]
+----
+int[] array = [ 1, 2, 3 ];
+----
+
+[NOTE.speaker]
+--
+In Groovy, the `{ …​ }` block is reserved for closures.
+That means that you cannot create array literals,
+instead you have to use the groovy list syntax.
+--
+
+== Package scope visibility
+
+[source,groovy,indent=0]
+----
+class Person {
+    String name
+}
+----
+
+vs
+
+[source,groovy,indent=0]
+----
+class Person {
+    @PackageScope String name
+}
+----
+
+[NOTE.speaker]
+--
+In Groovy, omitting a modifier on a field doesn’t
+result in a _package-private_ field like in Java.
+
+Instead, it is used to create a _property_,
+that is to say a _private field_,
+with an associated _getter_ and an associated _setter_.
+--
+
+== ARM blocks
+
+[source,java,indent=0]
+----
+Path file = Paths.get("/path/to/file");
+Charset charset = Charset.forName("UTF-8");
+try (BufferedReader reader = Files.newBufferedReader(file, charset)) {
+    String line;
+    while ((line = reader.readLine()) != null) {
+        System.out.println(line);
+    }
+} catch (IOException e) {
+    e.printStackTrace();
+}
+----
+
+vs
+
+[source,groovy,indent=0]
+----
+new File('/path/to/file').eachLine('UTF-8') {
+   println it
+}
+----
+
+[NOTE.speaker]
+--
+Automatic Resource Management (ARM) block from Java 7
+are not supported in Groovy.
+
+Instead, Groovy provides various methods relying
+on closures, which have the same effect while being more idiomatic
+--
+
+== Inner classes
+
+image::inner-class.gif[]
+
+http://www.groovy-lang.org/differences.html#_anonymous_inner_classes[Read all about it in the docs]
+
+[NOTE.speaker]
+--
+Inner classes have some quirks compared to the way they
+work in Java. For details check the docs:
+- http://www.groovy-lang.org/differences.html#_anonymous_inner_classes
+--
+
+== Lambdas
+
+[source,java,indent=0]
+----
+Runnable run = () -> System.out.println("Run");
+list.forEach(System.out::println);
+----
+
+vs
+
+[source,groovy,indent=0]
+----
+Runnable run = { println 'run' }
+list.each(this.&println)
+list.each { println it }           // preferred, for simple cases
+list.each { item -> println item } // preferred
+----
+
+[NOTE.speaker]
+--
+Java 8 supports lambdas and method references.
+
+Java 8 lambdas can be more or less considered
+as anonymous inner classes.
+Groovy doesn’t support that syntax, but has closures instead
+--
+
+== GStrings
+
+[source,java,indent=0]
+----
+include::{sources}/test/java/com/bol/examples/StringTest.java[tags=slide]
+----
+
+vs
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/examples/GStringTest.groovy[tags=slide]
+----
+
+[NOTE.speaker]
+--
+As double-quoted string literals are interpreted as
+`GString` values, Groovy may fail with compile error
+or produce subtly different code if a class with
+`String` literal containing a dollar character
+is compiled with Groovy and Java compiler.
+
+While typically, Groovy will auto-cast between
+`GString` and `String` if an API declares the
+type of a parameter,
+beware of Java APIs that accept an
+`Object` parameter and then check the actual type.
+--
+
+== String and Character literals
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/examples/StringCharTest.groovy[tags=slide]
+----
+
+[NOTE.speaker]
+--
+Groovy will automatically cast a single-character
+`String` to `char` when assigning to a variable of
+type `char`.
+When calling methods with arguments of type `char`
+we need to either cast explicitly or
+make sure the value has been cast in advance.
+
+Also, check the different styles of casting.
+The Groovy style casting, is more lenient then
+the C-style cast.
+--
+
+== Behaviour of `==`
+
+[source,java,indent=0]
+----
+include::{sources}/test/java/com/bol/examples/EqualsTest.java[tags=slide]
+----
+
+vs
+
+[source,groovy,indent=0]
+----
+include::{sources}/test/groovy/com/bol/examples/GEqualsTest.groovy[tags=slide]
+----
+
+[NOTE.speaker]
+--
+In Java `==` means,
+equality of primitive types or identity for objects.
+In Groovy `==` translates to
+`a.compareTo(b) == 0`, if they are Comparable,
+and `a.equals(b)` otherwise.
+
+To check for identity, there is `is`.
+E.g. `a.is(b)`
+--
+
+== Different keywords
+
+Additional keywords in Groovy:
+
+- `in`
+- `trait`
+
+[NOTE.speaker]
+--
+There are a few more keywords in Groovy than in Java.
+Don’t use them for variable names etc.
+--
+
+[data-background={imagesdir}/pig-enough.gif]
+== !

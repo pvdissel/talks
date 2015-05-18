@@ -1,0 +1,8 @@
+= !
+
+image::groovy-logo-colored.svg[height=200]
+
+- Java compatible
+- Enhanced Java-syntax
+- Dynamic
+- Scriptable

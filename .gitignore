@@ -5,3 +5,4 @@ gradle.properties
 .idea
 **/reveal.js/**/.sass-cache
 **/reveal.js/**/node_modules
+target

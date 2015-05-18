@@ -1,0 +1,6 @@
+= !
+
+image::groovy-logo-colored.svg[height=300]
+
+"gradle"
+-- groovy-lang.org

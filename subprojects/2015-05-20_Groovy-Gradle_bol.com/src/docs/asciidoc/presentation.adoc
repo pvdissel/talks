@@ -1,0 +1,48 @@
+:backend: revealjs
+:revealjs_theme: black
+:revealjs_customtheme: theme/bol.com/bol.com.css
+:revealjs_control: true
+:revealjs_center: true
+:revealjs_history: true
+:revealjs_transition: linear
+:source-highlighter: highlightjs
+:highlightjs_style: highlight.js/styles/sunburst.css
+:highlightjs_style_alternative: highlight.js/styles/idea.css
+// Relative to generated HTML
+:imagesdir: ./images
+////
+Relative to original asciidoc document,
+as source code is processed before creation
+of the html-file
+////
+:sources: ../..
+
+= Groovy Gradle
+Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
+
+include::groovy.adoc[leveloffset=+1]
+include::groovy-vs-java.adoc[leveloffset=+1]
+include::gradle.adoc[leveloffset=+1]
+include::summary.adoc[leveloffset=+1]
+
+== Resources
+
+- http://groovy-lang.org
+- http://gradle.org
+- Spock talk +
+  http://ikoodi.nl/talks/2015-03-10_SpockFramework_bol.com/
+- http://mrhaki.blogspot.nl/search/label/Gradle
+- http://mrhaki.blogspot.nl/search/label/Groovy
+
+[NOTE.speaker]
+--
+Find more info here
+--
+
+== Thanks
+
+Slides & samples +
+http://ikoodi.nl/talks +
+https://github.com/pvdissel/talks
+
+https://twitter.com/pvdissel[@pvdissel]

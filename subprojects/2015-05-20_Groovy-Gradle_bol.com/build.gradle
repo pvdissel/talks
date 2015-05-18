@@ -1,0 +1,39 @@
+apply plugin: 'groovy'
+
+ext {
+    libraries = [:]
+    versions = [:]
+}
+
+versions += [
+        groovy: '2.4.1',
+]
+
+libraries += [
+        groovy : "org.codehaus.groovy:groovy-all:${versions.groovy}",
+        logging: 'ch.qos.logback:logback-classic:1.1.2',
+]
+
+libraries.spock = ['org.spockframework:spock-core:0.7-groovy-2.0',
+                   libraries.groovy,
+                   'org.objenesis:objenesis:2.0',
+                   'cglib:cglib-nodep:2.2',
+                   'com.athaydes:spock-reports:1.2.4',
+]
+
+dependencies {
+    compile libraries.groovy
+    compile libraries.logging
+
+    testCompile libraries.spock
+}
+
+presentation {
+    dependsOn check
+    resources {
+        into('sources') {
+            from "${projectDir}/src/main/groovy"
+            from "${projectDir}/src/test/groovy"
+        }
+    }
+}
