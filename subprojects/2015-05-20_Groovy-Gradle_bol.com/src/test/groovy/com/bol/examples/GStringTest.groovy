@@ -8,9 +8,9 @@ class GStringTest {
     public void GString() {
         // tag::slide[]
         def val = 2
-        assert 'c'.getClass() == String
-        assert "c".getClass() == String
-        assert "c${val}".getClass() in GString
+        assert 'c'.class == String
+        assert "c".class == String
+        assert "c${val}".class in GString
         // end::slide[]
     }
 }

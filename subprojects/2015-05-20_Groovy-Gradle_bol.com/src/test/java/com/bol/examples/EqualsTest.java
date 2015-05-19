@@ -10,7 +10,7 @@ public class EqualsTest {
         String a = new String("a");
         String b = new String("a");
         assert a != b;
-        assert a.equals(b) == true;
+        assert true == a.equals(b);
         // end::slide[]
     }
 }

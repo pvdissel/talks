@@ -1,6 +1,53 @@
 = !
 
-image::groovy-logo-colored.svg[height=300]
+image::gradle-big.png[]
 
-"gradle"
--- groovy-lang.org
+"Open Source Build Automation"
+-- gradle.org
+
+== !
+
+From *command line* to *IDE* +
+to *continuous integration*, only one +
+Enterprise build automation system to rule them all. +
+
+Declare and execute all tasks necessary to +
+compile, test, package and ship +
+multi-*language* multi-*platform* +
+multi-*project* and multi-*channel* +
+software, SaaS and Mobile Apps.
+
+[data-background={imagesdir}/coolcool.gif]
+== !
+
+[data-background={imagesdir}/showtime.gif]
+== !
+
+== Lessons learned
+
+image::gradle-learned-from-others.gif[]
+
+== Features
+
+image::gradle-features.gif[]
+
+== Expressive Build Language
+
+image::gradle-api.gif[]
+
+== Integration with Other Build Tools
+
+image::gradle-integration.gif[]
+
+= Evolving
+
+|===
+|Release    |Initial   |Cycle
+
+|Java       |1995      |~2 years
+|Ant        |2000      |month \<\-> year
+|Maven      |2002      |month \<\-> year
+|Ivy        |2004      |month \<\-> year
+|Gradle     |2009      |~6 weeks
+|sbt        |2011      |days \<\-> months
+|===

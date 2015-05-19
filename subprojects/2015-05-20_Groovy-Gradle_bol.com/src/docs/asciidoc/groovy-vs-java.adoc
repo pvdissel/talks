@@ -261,9 +261,7 @@ To check for identity, there is `is`.
 E.g. `a.is(b)`
 --
 
-== Different keywords
-
-Additional keywords in Groovy:
+== Additional keywords
 
 - `in`
 - `trait`
