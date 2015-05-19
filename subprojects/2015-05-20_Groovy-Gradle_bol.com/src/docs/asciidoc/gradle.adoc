@@ -83,6 +83,6 @@ org.gradle.parallel=true
 
 == Use cases
 
-image::linkedin-logo.png[LinkedIn, width=400, link="https://gradle.org/case-study-gradle-at-linkedin/"]
+image::linked-in-logo.png[LinkedIn, width=400, link="https://gradle.org/case-study-gradle-at-linkedin/"]
 
 image::netflix-logo.png[Netflix, width=400, link="https://gradle.org/case-study-gradle-at-netflix/"]
