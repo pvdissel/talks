@@ -23,23 +23,52 @@ software, SaaS and Mobile Apps.
 [data-background={imagesdir}/showtime.gif]
 == !
 
-== Lessons learned
+== Lets do this together
 
-image::gradle-learned-from-others.gif[]
+We've got a Maven, Java, Junit project:
+
+<link:{sources}/../examples/maven-junit[examples/maven-junit]>
+
+Lets migrate it to Gradle, Groovy, Spock:
+
+<link:{sources}/../examples/gradle-groovy-spock[examples/gradle-groovy-spock]>
+
+= !
+
+image::gradle-big.png[]
 
 == Features
 
 image::gradle-features.gif[]
 
-== Expressive Build Language
+== Lessons learned
 
-image::gradle-api.gif[]
+image::gradle-learned-from-others.gif[]
 
-== Integration with Other Build Tools
+== Integration
 
 image::gradle-integration.gif[]
 
-= Evolving
+== Expressive build language
+
+image::gradle-api.gif[]
+
+== High performance builds
+
+- Cache everything
+- Incremental build
+- Parallelize
+- Gradle Daemon
+
+[source,properties,indent=0]
+.~/.gradle/gradle.properties
+----
+org.gradle.daemon=true
+org.gradle.configureondemand=true
+org.gradle.parallel=true
+----
+
+== Evolving
 
 |===
 |Release    |Initial   |Cycle
@@ -51,3 +80,9 @@ image::gradle-integration.gif[]
 |Gradle     |2009      |~6 weeks
 |sbt        |2011      |days \<\-> months
 |===
+
+== Use cases
+
+image::linkedin-logo-2c-128px-tm.png[LinkedIn, width=400, link="https://gradle.org/case-study-gradle-at-linkedin/"]
+
+image::netflix-logo.png[Netflix, width=400, link="https://gradle.org/case-study-gradle-at-netflix/"]

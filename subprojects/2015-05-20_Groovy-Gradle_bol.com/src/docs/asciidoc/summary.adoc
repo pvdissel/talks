@@ -1,8 +1,18 @@
 = !
 
-image::groovy-logo-colored.svg[height=200]
+image::groovy-logo-colored.svg[height=250]
 
 - Java compatible
 - Enhanced Java-syntax
 - Dynamic
 - Scriptable
+
+= !
+
+image::gradle-big.png[height=250]
+
+- Polyglot builds
+- Tool integrations
+- Robust dependency management
+- Powerful yet concise logic
+- High performance builds

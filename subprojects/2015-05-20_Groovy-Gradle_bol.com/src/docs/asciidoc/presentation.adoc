@@ -16,6 +16,7 @@ as source code is processed before creation
 of the html-file
 ////
 :sources: ../..
+:hide-uri-scheme:
 
 = Groovy Gradle
 Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
@@ -29,10 +30,9 @@ include::summary.adoc[leveloffset=+1]
 
 - http://groovy-lang.org
 - http://gradle.org
-- Spock talk +
-  http://ikoodi.nl/talks/2015-03-10_SpockFramework_bol.com/
-- http://mrhaki.blogspot.nl/search/label/Gradle
-- http://mrhaki.blogspot.nl/search/label/Groovy
+- http://ikoodi.nl/talks/2015-03-10_SpockFramework_bol.com/[My Spock Framework talk]
+- http://mrhaki.blogspot.nl/search/label/Gradle[mrhaki Gradle]
+- http://mrhaki.blogspot.nl/search/label/Groovy[mrhaki Groovy]
 
 [NOTE.speaker]
 --
@@ -41,7 +41,7 @@ Find more info here
 
 == Thanks
 
-Slides & samples +
+Slides & code +
 http://ikoodi.nl/talks +
 https://github.com/pvdissel/talks
 
