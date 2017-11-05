@@ -1,0 +1,19 @@
+= Mayfly
+
+Mayfly intro
+
+== Demo
+
+== Principles
+
+* *Feature* Centric Development
+* Environment = Production + Feature
+* *Isolated* runtime environment
+** Develop(ment)
+** Test
+** Accept(ance)
+* Deploy to Production *'when it's done'*
+
+== History
+
+== Current

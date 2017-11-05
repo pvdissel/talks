@@ -1,0 +1,40 @@
+= TAXP
+
+[ditaa]
+----
+
+   +--------+     +--------+     +--------+     +--------+
+   |        |     |        |     |        |     |        |
+   |  Test  +---->|  ACC   +---->|  XPR   +---->|  PRO   |
+   |        |     |        |     |        |     |        |
+   +--------+     +--------+     +--------+     +--------+
+
+----
+
+[NOTE.speaker]
+--
+TAXP stands for the different environments we have,
+Test, Acceptance, X-Production, Production
+
+I expect this is nothing new, and you know
+the differences between the environments.
+--
+
+== !
+
+image::jenkins.png[]
+
+== Jenkins
+
+- Start Jenkins
+- Create 2 jobs manually
+- Ask who does this
+
+== Jenkins 2
+
+- Generate all jobs with TAXP
+- Ask who does this
+
+== History
+
+== Current

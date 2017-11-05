@@ -6,7 +6,6 @@ buildscript {
 
     dependencies {
         classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
-        classpath 'com.github.jruby-gradle:jruby-gradle-plugin:1.5.0'
         classpath 'org.ajoberstar:gradle-git:1.1.0'
     }
 }
@@ -59,7 +58,7 @@ gradle.afterProject { project, projectState ->
 subprojects {
     repositories.jcenter()
     apply plugin: "org.asciidoctor.convert"
-    apply plugin: "com.github.jruby-gradle.base"
+
     asciidoctorj {
         version = '1.5.4'
     }

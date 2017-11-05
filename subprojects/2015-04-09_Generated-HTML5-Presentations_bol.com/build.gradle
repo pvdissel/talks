@@ -1,5 +1,4 @@
 apply plugin: 'groovy'
-apply plugin: 'com.github.jruby-gradle.base'
 
 ext {
     libraries = [:]
@@ -23,7 +22,7 @@ libraries.spock = ['org.spockframework:spock-core:0.7-groovy-2.0',
 ]
 
 dependencies {
-//    gems 'rubygems:asciidoctor-diagram:1.2.1'
+    asciidoctor 'org.asciidoctor:asciidoctorj-diagram:1.5.4.1'
 
     compile libraries.groovy
     compile libraries.logging
@@ -43,9 +42,7 @@ presentation {
             exclude '**/*.adoc'
         }
     }
-//    dependsOn jrubyPrepare
-//    gemPath = jrubyPrepare.outputDir
-//    requires << 'asciidoctor-diagram'
+    requires << 'asciidoctor-diagram'
     doLast {
         // Remove generated diagram images from sourceDir
         // We don't want them in the source repo, and
