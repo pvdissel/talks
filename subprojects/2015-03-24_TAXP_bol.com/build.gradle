@@ -23,7 +23,7 @@ libraries.spock = ['org.spockframework:spock-core:0.7-groovy-2.0',
 ]
 
 dependencies {
-    gems 'rubygems:asciidoctor-diagram:1.2.1'
+//    gems 'rubygems:asciidoctor-diagram:1.2.1'
 
     compile libraries.groovy
     compile libraries.logging
@@ -43,9 +43,9 @@ presentation {
             exclude '**/*.adoc'
         }
     }
-    dependsOn jrubyPrepareGems
-    gemPath = jrubyPrepareGems.outputDir
-    requires << 'asciidoctor-diagram'
+//    dependsOn jrubyPrepare
+//    gemPath = jrubyPrepare.outputDir
+//    requires << 'asciidoctor-diagram'
     doLast {
         // Remove generated diagram images from sourceDir
         // We don't want them in the source repo, and
