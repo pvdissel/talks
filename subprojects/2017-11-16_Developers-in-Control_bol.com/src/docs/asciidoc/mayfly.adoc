@@ -1,8 +1,10 @@
-= Mayfly
-
-Mayfly intro
+[data-background={imagesdir}/logo-mayfly-text.png]
+= !
 
 == Demo
+
+[data-background={imagesdir}/mayfly-idea.png]
+== !
 
 == Principles
 
@@ -14,6 +16,26 @@ Mayfly intro
 ** Accept(ance)
 * Deploy to Production *'when it's done'*
 
-== History
+== Features for users
 
-== Current
+* **__Almost__ fully self-service**
+* Git repository manager (Stash)
+* Continuous Integration (Jenkins with JobDSL)
+* Isolated feature environments
+* Issue tracking (via Jira)
+* Definition of Done checks
+
+== Mayfly @ bol.com
+
+* #1 team used Mayfly before DPI did
+* We develop Mayfly with Mayfly
+* 25% of the projects developed with Mayfly
+** 48 of 70+ teams develop with Mayfly
+
+== More info
+
+video::cHU8yEV8FwQ[youtube, width=800, height=500]
+
+== But ...
+
+// TODO: from the user viewpoint, why do they need Gitlab CI?

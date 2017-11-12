@@ -1,1 +1,24 @@
-= Spinnaker
+[data-background={imagesdir}/spinnaker-logo.png]
+= !
+
+[data-background={imagesdir}/spinnaker.io-homepage.png]
+== !
+
+[data-background={imagesdir}/spinnaker.io-homepage-enterprise.png]
+== !
+
+== Demo
+
+video::aubbyQ60W2U[youtube, start=30, end=143, width=800, height=500]
+// start=30 == 0:30
+// end=143 == 2:23
+
+== Features for users
+
+* CI Integrations +
+  (Jenkins, Travis CI, git, cron, docker registry, ..)
+* Deployment Strategies +
+  (red/black, rolling red/black, canary, custom)
+* Monitoring Integrations
+* Manual Judgments
+* Role-based Access Control

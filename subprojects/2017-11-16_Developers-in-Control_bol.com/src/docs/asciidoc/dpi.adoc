@@ -1,0 +1,7 @@
+= DPI
+
+* Development Process Innovation team
+** aka Build Tools Automation team
+* since 2012
+* ~6 engineers
+* fully autonomous

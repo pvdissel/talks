@@ -21,11 +21,17 @@ of the html-file
 = Developers in Control
 Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
 
+include::dpi.adoc[leveloffset=+1]
 include::taxp.adoc[leveloffset=+1]
 include::mayfly.adoc[leveloffset=+1]
+
+[data-background={imagesdir}/work-in-progress.gif]
+== work in progress
+
 include::gitlabci.adoc[leveloffset=+1]
 include::spinnaker.adoc[leveloffset=+1]
 include::selfservice.adoc[leveloffset=+1]
+include::summary.adoc[leveloffset=+1]
 
 == Resources
 

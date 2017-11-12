@@ -1,6 +1,25 @@
+[data-background={imagesdir}/self-service-laundry.png]
 = Self-Service
 
-== Artifact management
+== Fully autonomous teams
 
+""
+The only way to go fast, is to be fully autonomous
+""
+
+[data-background={imagesdir}/gitlab-stacked_wm_no_bg.png]
+== Continuous Delivery
+
+* Config in repo (`.gitlab-ci.yml`)
+
+[data-background={imagesdir}/spinnaker-logo.png]
+== Continuous Deployment
+
+[data-background={imagesdir}/artifactory-logo.png]
+== Artifact Management
+
+[data-background={imagesdir}/sonarqube-logo.png]
 == Code Quality
+
+== Build Support
 

@@ -1,3 +1,23 @@
-= Gitlab CI
+[data-background={imagesdir}/gitlab-stacked_wm_no_bg.png]
+= !
 
-== Mayfly principles
+[data-background={imagesdir}/gitlab.org-homepage.png]
+== !
+
+== Demo
+
+video::wCtrOC0EGLg[youtube, width=800, height=500]
+
+== Features for users
+
+* **Fully self-service**
+* Git repository manager
+* Continuous Integration
+* Isolated feature environments +
+  (environment per branch/PR/MR)
+* Issue tracking
+* Wiki, static-site hosting, ...
+
+== What about deployments?
+
+// TODO: from the user viewpoint, why do they need Spinnaker!
