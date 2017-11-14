@@ -3,3 +3,25 @@
 
 [data-background={imagesdir}/jfrog.com-homepage.png]
 == !
+
+== what/how/why?
+
+// TODO: add content
+
+[data-background={imagesdir}/artifactory-logo-blue.png]
+== Features for users
+
+* **Fully self-service**  +
+  hopefully future Artifactory version will support this out-of-the-box,
+  else we will write a layer around Artifactory
+
+[data-background={imagesdir}/artifactory-logo-blue.png]
+== Artifactory @ bol.com
+
+* Since ~2012
+* ~10.2 TB of artifacts
+** Of which 10.1 TB are deployable artifacts
+* 756,833 artifacts
+** Maven, npm, PyPI, gems
+* **2 app instances**, 4 core @ 2.7 Ghz, 16 GB ram, high-failover
+* **2 db instances**, 4 core @ 2.7 Ghz, 6 GB, master-master

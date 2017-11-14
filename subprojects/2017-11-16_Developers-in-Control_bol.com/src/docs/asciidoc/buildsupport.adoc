@@ -1,2 +1,9 @@
+[data-background={imagesdir}/support.gif]
 = Build Support
 
+== Build Support
+
+* Build Automation consultants
+* Best practices
+* Templates
+* Plugins

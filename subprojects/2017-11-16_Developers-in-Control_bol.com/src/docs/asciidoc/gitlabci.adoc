@@ -1,13 +1,15 @@
-[data-background={imagesdir}/gitlab-stacked_wm_no_bg.png]
+[data-background={imagesdir}/gitlab-logo.png]
 = Continuous Delivery
 
 [data-background={imagesdir}/gitlab.org-homepage.png]
 == !
 
+[data-background={imagesdir}/gitlab-logo-blue.png]
 == Demo
 
 video::wCtrOC0EGLg[youtube, width=800, height=500]
 
+[data-background={imagesdir}/gitlab-logo-blue.png]
 == Features for users
 
 * **Fully self-service**
@@ -18,6 +20,17 @@ video::wCtrOC0EGLg[youtube, width=800, height=500]
 * Issue tracking
 * Wiki, static-site hosting, ...
 
+[data-background={imagesdir}/gitlab-logo-blue.png]
+== Gitlab @ bol.com
+
+* ~100 GB of repositories
+* 3,719 repositories (1,335 forks)
+** 15,196 merge-requests
+* **2 app instances**, 4 core @ 2.7 Ghz, 20 GB ram, HA
+* **2 db instances**, 4 core @ 2.7 Ghz, 6 GB, master-master
+* **# redis instances**, ...
+
+[data-background={imagesdir}/epic-deployment.gif]
 == What about deployments?
 
 // TODO: from the user viewpoint, why do they need Spinnaker!

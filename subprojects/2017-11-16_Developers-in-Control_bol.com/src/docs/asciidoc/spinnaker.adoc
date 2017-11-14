@@ -7,14 +7,17 @@
 [data-background={imagesdir}/spinnaker.io-homepage-enterprise.png]
 == !
 
+[data-background={imagesdir}/spinnaker-logo-blue.png]
 == Demo
 
 video::aubbyQ60W2U[youtube, start=30, end=143, width=800, height=500]
 // start=30 == 0:30
 // end=143 == 2:23
 
+[data-background={imagesdir}/spinnaker-logo-blue.png]
 == Features for users
 
+* **Fully self-service**
 * CI Integrations +
   (Jenkins, Travis CI, git, cron, docker registry, ..)
 * Deployment Strategies +
@@ -22,3 +25,6 @@ video::aubbyQ60W2U[youtube, start=30, end=143, width=800, height=500]
 * Monitoring Integrations
 * Manual Judgments
 * Role-based Access Control
+
+[data-background={imagesdir}/spinnaker-logo-blue.png]
+== Spinnaker @ bol.com

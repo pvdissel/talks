@@ -1,7 +1,5 @@
 = TAXP
 
-// TODO: show job related to the envs?
-
 [ditaa]
 ----
 
@@ -13,38 +11,34 @@
 
 ----
 
-[data-background={imagesdir}/jenkins.png]
+[data-background={imagesdir}/jenkins-logo.png]
 == !
 
+[data-background={imagesdir}/jenkins-logo-blue.png]
 == Demo
 
-[NOTE.speaker]
---
-demo 1:
-- Start Jenkins
-- Create 2 jobs manually
-- Ask who does this
-demo 2:
-- Generate all jobs with TAXP
-- Ask who does this
---
+// TODO: update with TAXP demo
+video::wCtrOC0EGLg[youtube, width=800, height=500]
 
 [data-background={imagesdir}/evolution_of_jenkins_job_management.jpg]
 == !
-// Evolution of Jenkins Managements
 
+[data-background={imagesdir}/jenkins-logo-blue.png]
 == Features for users
 
 * **Self-service within a __limited framework__**
 
+[data-background={imagesdir}/jenkins-logo-blue.png]
 == Jenkins @ bol.com
 
 image::bol.com-company-vs-jenkins-jobs.png[]
 
+[data-background={imagesdir}/jenkins-logo-blue.png]
 == Jenkins @ bol.com
 
 image::bol.com-jenkins-jobs.png[]
 
+[data-background={imagesdir}/jenkins-logo-blue.png]
 == Jenkins @ bol.com
 
 * ~5300 Jenkins jobs
@@ -57,20 +51,18 @@ image::bol.com-jenkins-jobs.png[]
 * **159 browser test slaves:** 1 core @ 2 Ghz, 4GB ram +
   ~20 GB disk used for builds (per slave)
 
+[data-background={imagesdir}/jenkins-logo-blue.png]
 == More info
 
 video::8jQm2wqX4xc[youtube, width=800, height=500]
 
-== But it wasn't enough
+[data-background={imagesdir}/gimme.gif]
+== Users wanted
 
-// TODO: Change this to the user viewpoint, why did they need Mayfly!
+* More freedom
+* More autonomy
+* Smaller releases
+* Releasing more often
 
-* Jenkins not build for full self-service
-* Jenkins not build for scale
-* Jenkins maintenance hell +
-  (plugins anyone?)
-
-
-// users wilden autonomy
-// waren nog niet zover
-// mayfly was stapje voorwaards om (op)geleid te worden naar ...
+[data-background={imagesdir}/stuff-to-learn.gif]
+== But not everyone was ready

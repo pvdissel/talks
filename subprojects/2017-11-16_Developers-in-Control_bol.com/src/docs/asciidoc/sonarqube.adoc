@@ -3,3 +3,24 @@
 
 [data-background={imagesdir}/sonarqube.org-homepage.png]
 == !
+
+== what/how/why?
+
+// TODO: add content
+
+[data-background={imagesdir}/sonarqube-logo-blue.png]
+== Features for users
+
+* **Fully self-service**  +
+  hopefully sonarqube 6+ will support this out-of-the-box,
+  else we will implement it into sonarqube,
+  or we will write a layer around sonarqube
+
+
+[data-background={imagesdir}/sonarqube-logo-blue.png]
+== sonarqube @ bol.com
+
+* Since ~2015
+* ~200 projects
+* **1 app instance**, 4 core @ 2.7 Ghz, 8 GB ram
+* **2 db instances**, 2 core @ 2.7 Ghz, 8 GB, master-master

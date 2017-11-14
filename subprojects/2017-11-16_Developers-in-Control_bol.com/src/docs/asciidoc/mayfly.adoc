@@ -1,11 +1,15 @@
-[data-background={imagesdir}/logo-mayfly-text.png]
+[data-background={imagesdir}/mayfly-logo-text.png]
 = !
 
 == Demo
 
+// TODO: update with mayfly demo
+video::wCtrOC0EGLg[youtube, width=800, height=500]
+
 [data-background={imagesdir}/mayfly-idea.png]
 == !
 
+[data-background={imagesdir}/mayfly-logo-text-blue.png]
 == Principles
 
 * *Feature* Centric Development
@@ -16,6 +20,7 @@
 ** Accept(ance)
 * Deploy to Production *'when it's done'*
 
+[data-background={imagesdir}/mayfly-logo-text-blue.png]
 == Features for users
 
 * **__Almost__ fully self-service**
@@ -25,6 +30,7 @@
 * Issue tracking (via Jira)
 * Definition of Done checks
 
+[data-background={imagesdir}/mayfly-logo-text-blue.png]
 == Mayfly @ bol.com
 
 * #1 team used Mayfly before DPI did
@@ -32,10 +38,10 @@
 * 25% of the projects developed with Mayfly
 ** 48 of 70+ teams develop with Mayfly
 
+[data-background={imagesdir}/mayfly-logo-text-blue.png]
 == More info
 
 video::cHU8yEV8FwQ[youtube, width=800, height=500]
 
-== But ...
-
-// TODO: from the user viewpoint, why do they need Gitlab CI?
+[data-background={imagesdir}/embrace.gif]
+== !
