@@ -1,5 +1,5 @@
 [data-background={imagesdir}/spinnaker-logo.png]
-= !
+= Continuous Deployment
 
 [data-background={imagesdir}/spinnaker.io-homepage.png]
 == !

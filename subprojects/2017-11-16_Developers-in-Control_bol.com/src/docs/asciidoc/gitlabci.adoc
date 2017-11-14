@@ -1,5 +1,5 @@
 [data-background={imagesdir}/gitlab-stacked_wm_no_bg.png]
-= !
+= Continuous Delivery
 
 [data-background={imagesdir}/gitlab.org-homepage.png]
 == !

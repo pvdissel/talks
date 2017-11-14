@@ -1,5 +1,7 @@
 = TAXP
 
+// TODO: show job related to the envs?
+
 [ditaa]
 ----
 
@@ -11,30 +13,64 @@
 
 ----
 
-[NOTE.speaker]
---
-TAXP stands for the different environments we have,
-Test, Acceptance, X-Production, Production
-
-I expect this is nothing new, and you know
-the differences between the environments.
---
-
+[data-background={imagesdir}/jenkins.png]
 == !
 
-image::jenkins.png[]
+== Demo
 
-== Jenkins
-
+[NOTE.speaker]
+--
+demo 1:
 - Start Jenkins
 - Create 2 jobs manually
 - Ask who does this
-
-== Jenkins 2
-
+demo 2:
 - Generate all jobs with TAXP
 - Ask who does this
+--
 
-== History
+[data-background={imagesdir}/evolution_of_jenkins_job_management.jpg]
+== !
+// Evolution of Jenkins Managements
 
-== Current
+== Features for users
+
+* **Self-service within a __limited framework__**
+
+== Jenkins @ bol.com
+
+image::bol.com-company-vs-jenkins-jobs.png[]
+
+== Jenkins @ bol.com
+
+image::bol.com-jenkins-jobs.png[]
+
+== Jenkins @ bol.com
+
+* ~5300 Jenkins jobs
+* **1 master:** VM, 6 cores @ 2.7 Ghz, 47 GB ram +
+  800 GB disk used for jobs
+* **8 build slaves:** VM, 4 cores @ 2.7 Ghz, 12 GB ram +
+  ~120 GB disk used for builds (per slave)
+* **1 build slave:** bare, 24 cores @ 2.3 Ghz, 64 GB ram +
+  ~30 GB disk used for builds
+* **159 browser test slaves:** 1 core @ 2 Ghz, 4GB ram +
+  ~20 GB disk used for builds (per slave)
+
+== More info
+
+video::8jQm2wqX4xc[youtube, width=800, height=500]
+
+== But it wasn't enough
+
+// TODO: Change this to the user viewpoint, why did they need Mayfly!
+
+* Jenkins not build for full self-service
+* Jenkins not build for scale
+* Jenkins maintenance hell +
+  (plugins anyone?)
+
+
+// users wilden autonomy
+// waren nog niet zover
+// mayfly was stapje voorwaards om (op)geleid te worden naar ...

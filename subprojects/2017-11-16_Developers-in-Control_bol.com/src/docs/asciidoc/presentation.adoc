@@ -28,9 +28,12 @@ include::mayfly.adoc[leveloffset=+1]
 [data-background={imagesdir}/work-in-progress.gif]
 == work in progress
 
+include::selfservice.adoc[leveloffset=+1]
 include::gitlabci.adoc[leveloffset=+1]
 include::spinnaker.adoc[leveloffset=+1]
-include::selfservice.adoc[leveloffset=+1]
+include::artifactory.adoc[leveloffset=+1]
+include::sonarqube.adoc[leveloffset=+1]
+include::buildsupport.adoc[leveloffset=+1]
 include::summary.adoc[leveloffset=+1]
 
 == Resources
@@ -40,11 +43,6 @@ include::summary.adoc[leveloffset=+1]
 //- http://ikoodi.nl/talks/2015-03-10_SpockFramework_bol.com/[My Spock Framework talk]
 //- http://mrhaki.blogspot.nl/search/label/Gradle[mrhaki Gradle]
 //- http://mrhaki.blogspot.nl/search/label/Groovy[mrhaki Groovy]
-
-[NOTE.speaker]
---
-Find more info here
---
 
 == Thanks
 

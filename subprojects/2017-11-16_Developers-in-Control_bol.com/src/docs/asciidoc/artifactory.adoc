@@ -1,0 +1,5 @@
+[data-background={imagesdir}/artifactory-logo.png]
+= Artifact Management
+
+[data-background={imagesdir}/jfrog.com-homepage.png]
+== !
