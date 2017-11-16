@@ -1,6 +1,10 @@
 [data-background={imagesdir}/support.gif]
 = Build Support
 
+[data-background={imagesdir}/dpi-support-channels.png]
+== Build Support
+
+[data-background={imagesdir}/dpi-support-channels-blue.png]
 == Build Support
 
 * Build Automation consultants
