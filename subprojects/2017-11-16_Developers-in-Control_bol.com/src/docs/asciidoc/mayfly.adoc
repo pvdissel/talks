@@ -1,6 +1,7 @@
 [data-background={imagesdir}/mayfly-logo-text.png]
 = !
 
+[data-background={imagesdir}/mayfly-logo-text-blue.png]
 == Demo
 
 video::2pDgGA46bF8[youtube, width=800, height=500]
