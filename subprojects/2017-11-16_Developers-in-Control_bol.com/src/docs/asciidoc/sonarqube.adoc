@@ -4,9 +4,12 @@
 [data-background={imagesdir}/sonarqube.org-homepage.png]
 == !
 
-== what/how/why?
+[data-background={imagesdir}/sonarqube-logo-blue.png]
+== Users should be able to
 
-// TODO: add content
+* Manage their own service account
+** Dashboards, Rules, Quality Profiles, Quality Gates
+* Be able to use SonarLint against all projects
 
 [data-background={imagesdir}/sonarqube-logo-blue.png]
 == Features for users
@@ -16,11 +19,10 @@
   else we will implement it into sonarqube,
   or we will write a layer around sonarqube
 
-
 [data-background={imagesdir}/sonarqube-logo-blue.png]
 == sonarqube @ bol.com
 
 * Since ~2015
 * ~200 projects
-* **1 app instance**, 4 core @ 2.7 Ghz, 8 GB ram
-* **2 db instances**, 2 core @ 2.7 Ghz, 8 GB, master-master
+* **1 app instance** VM, 4 cores, 8 GB ram
+* **2 db instances** VM, 2 cores, 8 GB ram, HA

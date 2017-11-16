@@ -41,6 +41,8 @@ include::summary.adoc[leveloffset=+1]
 * https://www.youtube.com/watch?v=8jQm2wqX4xc[video: Cultivating the Jenkins job jungle with Groovy @ JFall 2014]
 * https://github.com/pvdissel/talk-jenkins-jobdsl[code: Cultivating the Jenkins job jungle with Groovy]
 * https://www.youtube.com/watch?v=cHU8yEV8FwQ[video: Dockerize user stories with Mayfly @ Devoxx 2015]
+* https://gitlab.org
+* https://spinnaker.io
 
 == Thanks
 

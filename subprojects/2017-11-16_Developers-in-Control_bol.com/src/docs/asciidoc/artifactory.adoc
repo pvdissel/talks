@@ -4,15 +4,28 @@
 [data-background={imagesdir}/jfrog.com-homepage.png]
 == !
 
-== what/how/why?
+[data-background={imagesdir}/artifactory-logo-blue.png]
+== What we want
 
-// TODO: add content
+[data-background={imagesdir}/bintray-homepage.png]
+== !
+
+[data-background={imagesdir}/bintray-pricing.png]
+== !
+
+[data-background={imagesdir}/artifactory-logo-blue.png]
+== Users should be able to
+
+* Manage their own service account
+* Claim a package namespace for their service (eg. com.bol.myservice)
+* Add remote repositories to be proxied
+** Which should be approved by security
 
 [data-background={imagesdir}/artifactory-logo-blue.png]
 == Features for users
 
 * **Fully self-service**  +
-  hopefully future Artifactory version will support this out-of-the-box,
+  hopefully future Artifactory version will support this out-of-the-box, +
   else we will write a layer around Artifactory
 
 [data-background={imagesdir}/artifactory-logo-blue.png]
@@ -20,8 +33,8 @@
 
 * Since ~2012
 * ~10.2 TB of artifacts
-** Of which 10.1 TB are deployable artifacts
+** Of which 10.1 TB are deployables
 * 756,833 artifacts
-** Maven, npm, PyPI, gems
-* **2 app instances**, 4 core @ 2.7 Ghz, 16 GB ram, high-failover
-* **2 db instances**, 4 core @ 2.7 Ghz, 6 GB, master-master
+** Maven, npm, bower, PyPI, gems
+* **2 app instances** VM, 4 cores, 16 GB ram, HF
+* **2 db instances** VM, 4 cores, 6 GB ram, HA

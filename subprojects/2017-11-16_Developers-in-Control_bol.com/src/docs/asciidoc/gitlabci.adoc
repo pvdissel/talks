@@ -16,8 +16,8 @@ video::wCtrOC0EGLg[youtube, width=800, height=500]
 * Git repository manager
 * Continuous Integration
 * Isolated feature environments +
-  (environment per branch/PR/MR)
-* Issue tracking
+  (environment per branch/MR)
+* Issue tracking, issue boards, milestones, ...
 * Wiki, static-site hosting, ...
 
 [data-background={imagesdir}/gitlab-logo-blue.png]
@@ -26,11 +26,11 @@ video::wCtrOC0EGLg[youtube, width=800, height=500]
 * ~100 GB of repositories
 * 3,719 repositories (1,335 forks)
 ** 15,196 merge-requests
-* **2 app instances**, 4 core @ 2.7 Ghz, 20 GB ram, HA
-* **2 db instances**, 4 core @ 2.7 Ghz, 6 GB, master-master
-* **# redis instances**, ...
+* **2 app instances** VM, 4 cores, 20 GB ram, HA
+* **2 db instances** VM, 4 cores, 6 GB ram, HA
+* **2 redis instances** VM, 2 cores, 4 GB ram, HA
+* **3 sentinel instances** VM, 2 cores, 4 GB ram, HA
+* **2 runner instances** VM, 2 cores, 12 GB ram
 
 [data-background={imagesdir}/epic-deployment.gif]
 == What about deployments?
-
-// TODO: from the user viewpoint, why do they need Spinnaker!

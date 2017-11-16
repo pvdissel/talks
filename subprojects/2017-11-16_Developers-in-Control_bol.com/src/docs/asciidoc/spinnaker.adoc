@@ -28,3 +28,7 @@ video::aubbyQ60W2U[youtube, start=30, end=143, width=800, height=500]
 
 [data-background={imagesdir}/spinnaker-logo-blue.png]
 == Spinnaker @ bol.com
+
+* Running in Kubernetes
+* Deploying to Kubernetes
+* Focus on container based deployments

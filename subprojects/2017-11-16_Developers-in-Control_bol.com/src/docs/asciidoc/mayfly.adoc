@@ -3,8 +3,7 @@
 
 == Demo
 
-// TODO: update with mayfly demo
-video::wCtrOC0EGLg[youtube, width=800, height=500]
+video::2pDgGA46bF8[youtube, width=800, height=500]
 
 [data-background={imagesdir}/mayfly-idea.png]
 == !
@@ -13,11 +12,11 @@ video::wCtrOC0EGLg[youtube, width=800, height=500]
 == Principles
 
 * *Feature* Centric Development
-* Environment = Production + Feature
 * *Isolated* runtime environment
 ** Develop(ment)
 ** Test
 ** Accept(ance)
+* Environment = Production + Feature
 * Deploy to Production *'when it's done'*
 
 [data-background={imagesdir}/mayfly-logo-text-blue.png]
@@ -27,7 +26,7 @@ video::wCtrOC0EGLg[youtube, width=800, height=500]
 * Git repository manager (Stash)
 * Continuous Integration (Jenkins with JobDSL)
 * Isolated feature environments
-* Issue tracking (via Jira)
+* Issue tracking (Jira)
 * Definition of Done checks
 
 [data-background={imagesdir}/mayfly-logo-text-blue.png]
@@ -37,6 +36,8 @@ video::wCtrOC0EGLg[youtube, width=800, height=500]
 * We develop Mayfly with Mayfly
 * 25% of the projects developed with Mayfly
 ** 48 of 70+ teams develop with Mayfly
+* **3 mesos masters** metal, 8 core, 30 GB ram, HA
+* **3 mesos slaves** metal, 24 core, 256 GB ram, HA
 
 [data-background={imagesdir}/mayfly-logo-text-blue.png]
 == More info

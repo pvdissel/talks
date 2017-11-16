@@ -17,8 +17,7 @@
 [data-background={imagesdir}/jenkins-logo-blue.png]
 == Demo
 
-// TODO: update with TAXP demo
-video::wCtrOC0EGLg[youtube, width=800, height=500]
+video::5Ttsut5yuRw[youtube, width=800, height=500]
 
 [data-background={imagesdir}/evolution_of_jenkins_job_management.jpg]
 == !
@@ -27,28 +26,54 @@ video::wCtrOC0EGLg[youtube, width=800, height=500]
 == Features for users
 
 * **Self-service within a __limited framework__**
+* Choice between different maturity levels
+* Support different pipelines types +
+  (eg. app, db, api)
+
+[data-background={imagesdir}/to-the-moon.gif]
+== Man on the Moon
+
+[data-background={imagesdir}/to-the-moon-still.gif]
+== Man on the Moon: Phase 1
+
+* Every code push is auto deployed to test environment
+* Build and publish production patch fixes from `patches/*` branches
+* Team asks SRT to deploy to production
+
+[data-background={imagesdir}/to-the-moon-still.gif]
+== Man on the Moon: Phase 2
+
+* same as phase 1, except:
+** Team can deploy to production themselves
+
+[data-background={imagesdir}/to-the-moon-still.gif]
+== Man on the Moon: Phase 3
+
+* same as phase 2, except:
+** minus the patch production jobs +
+   master == production
 
 [data-background={imagesdir}/jenkins-logo-blue.png]
 == Jenkins @ bol.com
 
-image::bol.com-company-vs-jenkins-jobs.png[]
+image::bol.com-company-vs-jenkins-jobs.png[width=800]
 
 [data-background={imagesdir}/jenkins-logo-blue.png]
 == Jenkins @ bol.com
 
-image::bol.com-jenkins-jobs.png[]
+image::bol.com-jenkins-jobs.png[width=800]
 
 [data-background={imagesdir}/jenkins-logo-blue.png]
 == Jenkins @ bol.com
 
 * ~5300 Jenkins jobs
-* **1 master:** VM, 6 cores @ 2.7 Ghz, 47 GB ram +
+* **1 master:** VM, 6 cores, 47 GB ram +
   800 GB disk used for jobs
-* **8 build slaves:** VM, 4 cores @ 2.7 Ghz, 12 GB ram +
+* **8 build slaves:** VM, 4 cores, 12 GB ram +
   ~120 GB disk used for builds (per slave)
-* **1 build slave:** bare, 24 cores @ 2.3 Ghz, 64 GB ram +
+* **1 build slave:** metal, 24 cores, 64 GB ram +
   ~30 GB disk used for builds
-* **159 browser test slaves:** 1 core @ 2 Ghz, 4GB ram +
+* **159 browser test slaves:** VM, 1 cores, 4GB ram +
   ~20 GB disk used for builds (per slave)
 
 [data-background={imagesdir}/jenkins-logo-blue.png]
