@@ -9,17 +9,19 @@ buildscript {
 
     dependencies {
         classpath 'org.asciidoctor:asciidoctor-gradle-jvm:2.2.0'
-        classpath 'org.ajoberstar:gradle-git:1.1.0'
+        classpath 'org.ajoberstar:gradle-git-publish:2.1.1'
     }
 }
 
 import org.asciidoctor.gradle.AsciidoctorTask
 
 // TODO: Somehow create index.html file based on subprojects, linking to each presentation
-apply plugin: "org.ajoberstar.github-pages"
-githubPages {
+apply plugin: 'org.ajoberstar.git-publish'
+gitPublish {
     repoUri = 'git@github.com:pvdissel/talks.git'
-    pages {
+    branch = 'gh-pages'
+    repoDir = file("$buildDir/gitPublish")
+    contents {
         subprojects.each { p ->
             // TODO: Use output path from 'presentation' task, instead of hardcoding
             from("${p.buildDir}/asciidoc/html5/") {
@@ -50,11 +52,12 @@ githubPages {
             rename(/.*/, 'index.html')
         }
     }
+    commitMessage = 'Updating talks'
 }
 
 gradle.afterProject { project, projectState ->
     project.tasks.findAll { it.name == 'presentation' }.each {
-        rootProject.publishGhPages.dependsOn it
+        rootProject.gitPublishPush.dependsOn it
     }
 }
 
@@ -63,7 +66,6 @@ subprojects {
     apply plugin: "org.asciidoctor.convert"
 
     ext.backendPath = "${rootDir}/.backends/reveal.js/v3.8.0"
-
 
     task presentation(type: AsciidoctorTask) {
         sourceDir = file('src/docs/asciidoc')
