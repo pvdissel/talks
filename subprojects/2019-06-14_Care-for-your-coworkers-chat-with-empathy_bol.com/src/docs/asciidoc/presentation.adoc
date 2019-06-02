@@ -1,0 +1,199 @@
+:backend: revealjs
+:revealjs_theme: black
+:revealjs_customtheme: theme/bol.com-v3/bol.com.css
+:revealjs_control: true
+:revealjs_center: true
+:revealjs_history: true
+:revealjs_transition: linear
+:source-highlighter: highlightjs
+:highlightjs_style: highlight.js/styles/sunburst.css
+:highlightjs_style_alternative: highlight.js/styles/idea.css
+:icons: font
+// Relative to generated HTML
+:imagesdir: ./images
+////
+Relative to original asciidoc document,
+as source code is processed before creation
+of the html-file
+////
+:sources: ../..
+:hide-uri-scheme:
+
+= Care for your coworkers, chat with empathy
+Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
+
+// TODO:
+// - Make full screen (1280x720 (or nearest 16:9 resolution) screenshots
+// - Show full chat window
+// - Pixelize distracting details (eg. rooms/people list)
+// - Extract chat sections to put it over a background, when needed
+
+== !
+
+image::chats/1.png[background, size=contain]
+
+[background-video="{imagesdir}/working-hard.mp4", background-video-loop=true, background-video-muted=true,background-size=cover]
+=== !
+
+=== !
+
+image::chats/2.png[background, size=contain]
+
+[background-video="{imagesdir}/meerkat-standing.mp4", background-video-loop=true, background-video-muted=true,background-size=cover]
+=== !
+
+=== !
+
+image::chats/3.png[background, size=contain]
+
+=== !
+
+image::chats/4.png[background, size=contain]
+
+=== !
+
+image::chats/5.png[background, size=contain]
+
+=== !
+
+image::chats/6.png[background, size=contain]
+
+=== !
+
+image::chats/7.png[background, size=contain]
+
+[background-video="{imagesdir}/what-are-you-talking-about.mp4", background-video-loop=true, background-video-muted=true,background-size=cover]
+=== ! 
+
+=== How effective is this chat?
+
+image::what-are-you-talking-about-still.gif[background, size=cover]
+
+image::chats/7-extract.png[]
+
+== !
+
+//----
+//UserA: Hi, <url-to-specific-job-in-X> is failing, no clue why...
+//       @eod have you seen this before?
+//----
+image::chats/8.png[background, size=contain]
+
+[background-video="{imagesdir}/peekaboo.mp4", background-video-loop=true, background-video-muted=true,background-size=cover]
+=== !
+
+[background-video="{imagesdir}/interesting.mp4", background-video-loop=true, background-video-muted=true,background-size=cover]
+=== !
+
+//----
+//UserA: Hi, <url-to-specific-job-in-X> is failing, no clue why...
+//       @eod have you seen this before?
+//----
+image::chats/8-extract.png[]
+
+== !
+
+//----
+//UserA: @eod <url-to-specific-job-in-X> is failing on environment Y, but works fine locally.
+//       We've added as much debug logging as available, and tried different configs as you can see in commit
+//       <link-to-A>
+//       <link-to-B>
+//       <link-to-C>
+//       but the error doesn't change.
+//       We suspect it has to do with the connection from X to Z, but haven't heard of any changes.
+//       Does this error ring a bell?
+//----
+image::chats/9.png[background, size=contain]
+
+[background-video="{imagesdir}/interesting-surprised.mp4", background-video-loop=true, background-video-muted=true,background-size=cover]
+=== !
+
+//----
+//UserA: @eod <url-to-specific-job-in-X> is failing on environment Y, but works fine locally.
+//       We've added as much debug logging as available, and tried different configs as you can see in commit
+//       <link-to-A>
+//       <link-to-B>
+//       <link-to-C>
+//       but the error doesn't change.
+//       We suspect it has to do with the connection from X to Z, but haven't heard of any changes.
+//       Does this error ring a bell?
+//----
+image::chats/9-extract.png[]
+
+[background-video="{imagesdir}/interesting-squinting.mp4", background-video-loop=true, background-video-muted=true,background-size=cover]
+=== !
+
+//----
+//UserA: @eod <url-to-specific-job-in-X> is failing on environment Y, but works fine locally.
+//       We've added as much debug logging as available, and tried different configs as you can see in commit
+//       <link-to-A>
+//       <link-to-B>
+//       <link-to-C>
+//       but the error doesn't change.
+//       We suspect it has to do with the connection from X to Z, but haven't heard of any changes.
+//       Does this error ring a bell?
+//----
+image::chats/9-extract.png[]
+
+== !
+
+//----
+//UserA: Is this the place to ask about tool A?
+//----
+image::chats/10.png[background, size=contain]
+
+[background-video="{imagesdir}/meerkat-standing.mp4", background-video-loop=true, background-video-muted=true,background-size=cover]
+=== !
+
+[state=white-on-white, background-video="{imagesdir}/sherlock-thinking.mp4", background-video-muted=true,background-size=cover]
+== Good question
+
+* Problem/Question
+* Context
+* Expectation
+
+[.notes]
+--
+* What is the problem?
+* Context: Where can the reader see the actual problem?
+* Context: Provide the error if the reader is not able to view the actual problem
+* Context: What did you try to fix/investigate the problem?
+* Expectations: Any suspections?
+--
+
+[state=white-on-white, background-video="{imagesdir}/everyone-on-the-lookout.mp4", background-video-muted=true,background-size=cover]
+=== Threading
+
+* Every thread has it's own context
+* First message defines context
+* Reuse threads
+
+[state=white-on-white, background-video="{imagesdir}/got-idea.mp4", background-video-muted=true,background-size=cover]
+== Tips for users
+
+* Read the room name/topic
+* Search for threads with similar issues
+* Start a new thread if no similar issue
+* Don't distract people unnessesarily
+* Provide full context in first message
+* Use the support rooms for support!
+
+[state=white-on-white, background-video="{imagesdir}/meerkat-standing.mp4", background-video-muted=true,background-size=cover]
+== Don't use *@all*
+
+unless you're the owner of the room, +
+informing your users
+
+[state=white-on-white, background-video="{imagesdir}/thinking-idea.mp4", background-video-muted=true,background-size=cover]
+=== Tips for room owners
+
+* Use informative room name/topic, including
+** Context of room (eg. opex list)
+** Who to contact for support
+* Provide support *only* in the support rooms
+
+== Care for your coworkers, chat with empathy
+
+Slides +
+http://ikoodi.nl/talks +
+https://github.com/pvdissel/talks

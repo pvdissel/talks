@@ -1,0 +1,14 @@
+dependencies {
+    asciidoctor 'org.asciidoctor:asciidoctorj-diagram:1.5.4.1'
+}
+
+presentation {
+    requires << 'asciidoctor-diagram'
+    doLast {
+        // Remove generated diagram images from sourceDir
+        // We don't want them in the source repo, and
+        // asciidoctor-diagram does not yet support setting
+        // a custom output dir
+        file("${presentation.sourceDir}/images").deleteDir()
+    }
+}
