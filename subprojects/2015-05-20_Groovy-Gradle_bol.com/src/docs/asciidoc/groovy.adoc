@@ -32,8 +32,9 @@ including scripting capabilities, +
 runtime and compile-time *meta-programming* and +
 *functional* programming.
 
-[data-background={imagesdir}/huh.gif]
 == !
+
+image::huh.gif[background, size=cover]
 
 == So, what is Groovy?
 

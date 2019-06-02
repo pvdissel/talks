@@ -34,5 +34,6 @@
 ** prepare TEST environment (TAM)
 ** open the sprint (DPI)
 
-[data-background={imagesdir}/dreadful.gif]
 == !
+
+image::dreadful.gif[background, size=cover]

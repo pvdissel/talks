@@ -1,11 +1,14 @@
-[data-background={imagesdir}/support.gif]
 = Build Support
 
-[data-background={imagesdir}/dpi-support-channels.png]
+image::support.gif[background, size=cover]
+
 == Build Support
 
-[data-background={imagesdir}/dpi-support-channels-blue.png]
+image::dpi-support-channels.png[background, size=cover]
+
 == Build Support
+
+image::dpi-support-channels-blue.png[background, size=cover]
 
 * Build Automation consultants
 * Best practices

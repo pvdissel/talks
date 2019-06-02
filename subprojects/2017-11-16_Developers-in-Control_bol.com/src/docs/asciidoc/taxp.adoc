@@ -11,60 +11,71 @@
 
 ----
 
-[data-background={imagesdir}/jenkins-logo.png]
 == !
 
-[data-background={imagesdir}/jenkins-logo-blue.png]
+image::jenkins-logo.png[background, size=cover]
+
 == Demo
+
+image::jenkins-logo-blue.png[background, size=cover]
 
 video::5Ttsut5yuRw[youtube, width=800, height=500]
 
-[data-background={imagesdir}/evolution_of_jenkins_job_management.jpg]
 == !
 
-[data-background={imagesdir}/jenkins-logo-blue.png]
+image::evolution_of_jenkins_job_management.jpg[background, size=cover]
+
 == Features for users
+
+image::jenkins-logo-blue.png[background, size=cover]
 
 * **Self-service within a __limited framework__**
 * Choice between different maturity levels
 * Support different pipelines types +
   (eg. app, db, api)
 
-[data-background={imagesdir}/to-the-moon.gif]
 == Man on the Moon
 
-[data-background={imagesdir}/to-the-moon-still.gif]
+image::to-the-moon.gif[background, size=cover]
+
 == Man on the Moon: Phase 1
+
+image::to-the-moon-still.gif[background, size=cover]
 
 * Every code push is auto deployed to test environment
 * Build and publish production patch fixes from `patches/*` branches
 * Team asks SRT to deploy to production
 
-[data-background={imagesdir}/to-the-moon-still.gif]
 == Man on the Moon: Phase 2
+
+image::to-the-moon-still.gif[background, size=cover]
 
 * same as phase 1, except:
 ** Team can deploy to production themselves
 
-[data-background={imagesdir}/to-the-moon-still.gif]
 == Man on the Moon: Phase 3
+
+image::to-the-moon-still.gif[background, size=cover]
 
 * same as phase 2, except:
 ** minus the patch production jobs +
    master == production
 
-[data-background={imagesdir}/jenkins-logo-blue.png]
 == Jenkins @ bol.com
+
+image::jenkins-logo-blue.png[background, size=cover]
 
 image::bol.com-company-vs-jenkins-jobs.png[width=800]
 
-[data-background={imagesdir}/jenkins-logo-blue.png]
 == Jenkins @ bol.com
+
+image::jenkins-logo-blue.png[background, size=cover]
 
 image::bol.com-jenkins-jobs.png[width=800]
 
-[data-background={imagesdir}/jenkins-logo-blue.png]
 == Jenkins @ bol.com
+
+image::jenkins-logo-blue.png[background, size=cover]
 
 * ~5300 Jenkins jobs
 * **1 master:** VM, 6 cores, 47 GB ram +
@@ -76,18 +87,21 @@ image::bol.com-jenkins-jobs.png[width=800]
 * **159 browser test slaves:** VM, 1 cores, 4GB ram +
   ~20 GB disk used for builds (per slave)
 
-[data-background={imagesdir}/jenkins-logo-blue.png]
 == More info
+
+image::jenkins-logo-blue.png[background, size=cover]
 
 video::8jQm2wqX4xc[youtube, width=800, height=500]
 
-[data-background={imagesdir}/gimme.gif]
 == Users wanted
+
+image::gimme.gif[background, size=cover]
 
 * More freedom
 * More autonomy
 * Smaller releases
 * Releasing more often
 
-[data-background={imagesdir}/stuff-to-learn.gif]
 == But not everyone was ready
+
+image::stuff-to-learn.gif[background, size=cover]

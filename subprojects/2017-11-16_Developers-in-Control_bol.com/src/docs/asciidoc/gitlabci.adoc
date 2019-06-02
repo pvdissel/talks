@@ -1,16 +1,20 @@
-[data-background={imagesdir}/gitlab-logo.png]
 = Continuous Delivery
 
-[data-background={imagesdir}/gitlab.org-homepage.png]
+image::gitlab-logo.png[background, size=cover]
+
 == !
 
-[data-background={imagesdir}/gitlab-logo-blue.png]
+image::gitlab.org-homepage.png[background, size=cover]
+
 == Demo
+
+image::gitlab-logo-blue.png[background, size=cover]
 
 video::wCtrOC0EGLg[youtube, width=800, height=500]
 
-[data-background={imagesdir}/gitlab-logo-blue.png]
 == Features for users
+
+image::gitlab-logo-blue.png[background, size=cover]
 
 * **Fully self-service**
 * Git repository manager
@@ -20,8 +24,9 @@ video::wCtrOC0EGLg[youtube, width=800, height=500]
 * Issue tracking, issue boards, milestones, ...
 * Wiki, static-site hosting, ...
 
-[data-background={imagesdir}/gitlab-logo-blue.png]
 == Gitlab @ bol.com
+
+image::gitlab-logo-blue.png[background, size=cover]
 
 * ~100 GB of repositories
 * 3,719 repositories (1,335 forks)
@@ -32,5 +37,6 @@ video::wCtrOC0EGLg[youtube, width=800, height=500]
 * **3 sentinel instances** VM, 2 cores, 4 GB ram, HA
 * **2 runner instances** VM, 2 cores, 12 GB ram
 
-[data-background={imagesdir}/epic-deployment.gif]
 == What about deployments?
+
+image::epic-deployment.gif[background, size=cover]

@@ -26,8 +26,9 @@ include::taxp.adoc[leveloffset=+1]
 include::mayfly.adoc[leveloffset=+1]
 include::selfservice.adoc[leveloffset=+1]
 
-[data-background={imagesdir}/work-in-progress.gif]
 == work in progress
+
+image::work-in-progress.gif[background, size=cover]
 
 include::gitlabci.adoc[leveloffset=+1]
 include::spinnaker.adoc[leveloffset=+1]

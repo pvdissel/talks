@@ -17,11 +17,13 @@ multi-*language* multi-*platform* +
 multi-*project* and multi-*channel* +
 software, SaaS and Mobile Apps.
 
-[data-background={imagesdir}/coolcool.gif]
 == !
 
-[data-background={imagesdir}/showtime.gif]
+image::coolcool.gif[background, size=cover]
+
 == !
+
+image::showtime.gif[background, size=cover]
 
 == Lets do this together
 

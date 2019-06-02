@@ -272,5 +272,6 @@ There are a few more keywords in Groovy than in Java.
 Don’t use them for variable names etc.
 --
 
-[data-background={imagesdir}/pig-enough.gif]
 == !
+
+image::pig-enough.gif[background, size=cover]

@@ -14,8 +14,9 @@
 ** Hook into standards +
    (eg. artifactory, rundeck, ...)
 
-[data-background={imagesdir}/mayfly-feature.png]
 = MayFly
+
+image::mayfly-feature.png[background, size=cover]
 
 == !
 

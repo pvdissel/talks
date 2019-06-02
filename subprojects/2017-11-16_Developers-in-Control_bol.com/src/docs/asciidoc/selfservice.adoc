@@ -1,15 +1,18 @@
-[data-background={imagesdir}/self-service-laundry.png]
 = !
 
-[data-background={imagesdir}/self-service-laundry-blue.png]
+image::self-service-laundry.png[background, size=cover]
+
 == !
+
+image::self-service-laundry-blue.png[background, size=cover]
 
 ""
 You build it, you run it, you love it
 ""
 
-[data-background={imagesdir}/self-service-laundry-blue.png]
 == Fully Autonomous Teams
+
+image::self-service-laundry-blue.png[background, size=cover]
 
 * A service is owned by a team
 * A team owns one or more services

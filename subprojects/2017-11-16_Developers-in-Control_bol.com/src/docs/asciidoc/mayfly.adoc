@@ -1,16 +1,20 @@
-[data-background={imagesdir}/mayfly-logo-text.png]
 = !
 
-[data-background={imagesdir}/mayfly-logo-text-blue.png]
+image::mayfly-logo-text.png[background, size=cover]
+
 == Demo
+
+image::mayfly-logo-text-blue.png[background, size=cover]
 
 video::2pDgGA46bF8[youtube, width=800, height=500]
 
-[data-background={imagesdir}/mayfly-idea.png]
 == !
 
-[data-background={imagesdir}/mayfly-logo-text-blue.png]
+image::mayfly-idea.png[background, size=cover]
+
 == Principles
+
+image::mayfly-logo-text-blue.png[background, size=cover]
 
 * *Feature* Centric Development
 * *Isolated* runtime environment
@@ -20,8 +24,9 @@ video::2pDgGA46bF8[youtube, width=800, height=500]
 * Environment = Production + Feature
 * Deploy to Production *'when it's done'*
 
-[data-background={imagesdir}/mayfly-logo-text-blue.png]
 == Features for users
+
+image::mayfly-logo-text-blue.png[background, size=cover]
 
 * **__Almost__ fully self-service**
 * Git repository manager (Stash)
@@ -30,8 +35,9 @@ video::2pDgGA46bF8[youtube, width=800, height=500]
 * Issue tracking (Jira)
 * Definition of Done checks
 
-[data-background={imagesdir}/mayfly-logo-text-blue.png]
 == Mayfly @ bol.com
+
+image::mayfly-logo-text-blue.png[background, size=cover]
 
 * #1 team used Mayfly before DPI did
 * We develop Mayfly with Mayfly
@@ -40,10 +46,12 @@ video::2pDgGA46bF8[youtube, width=800, height=500]
 * **3 mesos masters** metal, 8 core, 30 GB ram, HA
 * **3 mesos slaves** metal, 24 core, 256 GB ram, HA
 
-[data-background={imagesdir}/mayfly-logo-text-blue.png]
 == More info
+
+image::mayfly-logo-text-blue.png[background, size=cover]
 
 video::cHU8yEV8FwQ[youtube, width=800, height=500]
 
-[data-background={imagesdir}/embrace.gif]
 == !
+
+image::embrace.gif[background, size=cover]

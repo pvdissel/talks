@@ -22,7 +22,7 @@ libraries.spock = ['org.spockframework:spock-core:0.7-groovy-2.0',
 ]
 
 dependencies {
-    asciidoctor 'org.asciidoctor:asciidoctorj-diagram:1.5.4.1'
+    asciidoctor 'org.asciidoctor:asciidoctorj-diagram:1.5.18'
 
     compile libraries.groovy
     compile libraries.logging

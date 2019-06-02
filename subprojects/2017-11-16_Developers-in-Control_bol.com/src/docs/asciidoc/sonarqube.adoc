@@ -1,26 +1,31 @@
-[data-background={imagesdir}/sonarqube-logo.png]
 = Code Quality
 
-[data-background={imagesdir}/sonarqube.org-homepage.png]
+image::sonarqube-logo.png[background, size=cover]
+
 == !
 
-[data-background={imagesdir}/sonarqube-logo-blue.png]
+image::sonarqube.org-homepage.png[background, size=cover]
+
 == Users should be able to
+
+image::sonarqube-logo-blue.png[background, size=cover]
 
 * Manage their own service account
 ** Dashboards, Rules, Quality Profiles, Quality Gates
 * Be able to use SonarLint against all projects
 
-[data-background={imagesdir}/sonarqube-logo-blue.png]
 == Features for users
+
+image::sonarqube-logo-blue.png[background, size=cover]
 
 * **Fully self-service**  +
   hopefully sonarqube 6+ will support this out-of-the-box,
   else we will implement it into sonarqube,
   or we will write a layer around sonarqube
 
-[data-background={imagesdir}/sonarqube-logo-blue.png]
 == sonarqube @ bol.com
+
+image::sonarqube-logo-blue.png[background, size=cover]
 
 * Since ~2015
 * ~200 projects

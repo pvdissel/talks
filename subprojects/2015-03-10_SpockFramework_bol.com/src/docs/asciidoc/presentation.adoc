@@ -38,9 +38,10 @@ Patrick van Dissel <https://twitter.com/pvdissel[@pvdissel]>
  Vulcans, and other fascinating life forms."
 -- Spock Framework Reference Documentation, http://docs.spockframework.org
 
-
-[data-background={imagesdir}/minions-oooooh.gif]
 == !
+
+image::minions-oooooh.gif[background, size=cover]
+
 
 [NOTE.speaker]
 --
@@ -118,9 +119,9 @@ include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slid
 include::{sources}/test/groovy/com/bol/spock/sample/SamplesSpec.groovy[tags=slide8]
 ----
 
-
-[data-background={imagesdir}/minions-wonderful.gif]
 === !
+
+image::minions-wonderful.gif[background, size=cover]
 
 [NOTE.speaker]
 --
@@ -582,9 +583,9 @@ The `spock-reports` extension used this for BDD-style reports,
 and will probably be included into a future Spock release
 --
 
-
-[data-background={imagesdir}/minions-awesome.gif]
 == Data Driven Testing
+
+image::minions-awesome.gif[background, size=cover]
 
 [source,groovy,indent=0]
 ----
@@ -618,9 +619,9 @@ For all details, check the "Interaction Based Testing"
 chapter of the Spock documentation.
 --
 
-
-[data-background={imagesdir}/minions-shake-light.gif]
 == Extensions
+
+image::minions-shake-light.gif[background, size=cover]
 
 [NOTE.speaker]
 --
@@ -946,27 +947,27 @@ many of its concepts and features are inspired from JUnit.
 Here is a rough comparison
 --
 
-
-[data-background={imagesdir}/minions-laugh-bottom.gif]
 === !
+
+image::minions-laugh-bottom.gif[background, size=cover]
 
 [NOTE.speaker]
 --
 So, that's it
 --
 
-
-[data-background={imagesdir}/minions-exception.gif]
 == !
+
+image::minions-exception.gif[background, size=cover]
 
 [NOTE.speaker]
 --
 Do you feel like...?
 --
 
-
-[data-background={imagesdir}/minions-kiss.gif]
 == !
+
+image::minions-kiss.gif[background, size=cover]
 
 [NOTE.speaker]
 --

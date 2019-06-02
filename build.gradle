@@ -1,11 +1,14 @@
 buildscript {
     repositories {
         mavenLocal()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
         jcenter()
     }
 
     dependencies {
-        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
+        classpath 'org.asciidoctor:asciidoctor-gradle-jvm:2.2.0'
         classpath 'org.ajoberstar:gradle-git:1.1.0'
     }
 }
@@ -59,14 +62,10 @@ subprojects {
     repositories.jcenter()
     apply plugin: "org.asciidoctor.convert"
 
-    asciidoctorj {
-        version = '1.5.4'
-    }
+    ext.backendPath = "${rootDir}/.backends/reveal.js/v3.8.0"
 
-    ext.backendPath = "${rootDir}/.backends/reveal.js"
 
     task presentation(type: AsciidoctorTask) {
-        classpath = project.configurations.asciidoctor
         sourceDir = file('src/docs/asciidoc')
         sources {
             include 'presentation.adoc'
@@ -79,12 +78,10 @@ subprojects {
                 include '**/*'
             }
         }
-        backends = ['html5']
-        requires = ['slim', 'tilt', 'thread_safe']
         logDocuments = true
         options = [
                 template_engine: 'slim',
-                template_dirs  : ["${backendPath}/templates"]
+                template_dirs  : ["${backendPath}/templates/asciidoctor-reveal.js-2.0.0/templates" as String]
         ]
     }
 }
